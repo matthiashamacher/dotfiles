@@ -1,0 +1,6 @@
+--
+- name: "1Password | Install 1Password"
+  community.general.homebrew:
+    name: 1password
+    state: latest
+  become: true
