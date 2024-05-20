@@ -8,6 +8,10 @@
       ansible.builtin.import_tasks: pre_tasks/whoami.yml
       tags:
         - always
+    
+    - name: Setup Homebrew
+      ansible.builtin.import_tasks: pre_tasks/darwin/homebrew.yml
+      when: ansible_os_family == 'Darwin'
 
   tasks:
     - name: Set roles

@@ -1,0 +1,8 @@
+---
+- name: "Update homebrew"
+  command: "brew update --force"
+
+- name: "Initialise cache"
+  command: "brew --cache"
+  changed_when: false
+  check_mode: false
