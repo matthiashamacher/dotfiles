@@ -8,6 +8,7 @@ default_roles:
   - cleanshot
   - composer
   - displaylink
+  - dock
   - fzf
   - gnupg
   - inkdrop
