@@ -1,16 +1,33 @@
 default_roles:
   - 1password
+  - arc
+  - bartender
   - bat
+  - bitwarden
+  - cleanmymac
+  - cleanshot
   - composer
+  - displaylink
   - fzf
   - gnupg
+  - inkdrop
+  - jetbrains-toolbox
   - jq
   - just
   - make
   - neovim
   - node
+  - orbstafck
   - php
   - pinentry-mac
   - platformsh-cli
+  - raycast
+  - rectangle
+  - slack
+  - spotify
   - symfony-cli
+  - tower
+  - transmit
+  - visual-studio-code
+  - warp
   - zoxide
