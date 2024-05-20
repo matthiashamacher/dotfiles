@@ -64,7 +64,7 @@
   vars:
     item: Music
 
-- name: "Dock | Remove AppStore"
+- name: "Dock | Remove App Store"
   ansible.builtin.include_tasks: dock-remove.yml
   vars:
-    item: AppStore
+    item: App Store

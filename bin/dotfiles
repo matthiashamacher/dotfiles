@@ -146,7 +146,7 @@ function _task_done {
 function darwin_setup() {
     if ! [ -x "$(command -v brew)" ]; then
         _task "Installing Homebrew"
-        _cmd "/bin/bash -c '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'"
+        _cmd '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
     fi
     if [ -x "$(command -v ansible)"]; then
         _task "Installing Ansible"
