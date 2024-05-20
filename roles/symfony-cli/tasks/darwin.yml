@@ -1,4 +1,10 @@
 ---
+- name: "symfony-cli | Tap symfony-cli"
+  homebrew_tap:
+    name: symfony-cli/tap
+  become: "{{ (homebrew_user != ansible_user_id) | bool }}"
+  become_user: "{{ homebrew_user }}"
+
 - name: "symfony-cli | Install symfony-cli"
   homebrew:
     name: symfony-cli/tap/symfony-cli

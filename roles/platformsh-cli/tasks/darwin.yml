@@ -1,4 +1,10 @@
 ---
+- name: "platformsh-cli | Tap platformsh-cli"
+  homebrew_tap:
+    name: platformsh/tap
+  become: "{{ (homebrew_user != ansible_user_id) | bool }}"
+  become_user: "{{ homebrew_user }}"
+
 - name: "platformsh-cli | Install platformsh-cli"
   homebrew:
     name: platformsh/tap/platformsh-cli
