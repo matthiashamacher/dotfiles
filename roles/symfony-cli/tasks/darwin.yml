@@ -1,7 +1,7 @@
 ---
 - name: "symfony-cli | Install symfony-cli"
   homebrew:
-    name: symfony-cli
+    name: symfony-cli/tap/symfony-cli
     state: latest
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
