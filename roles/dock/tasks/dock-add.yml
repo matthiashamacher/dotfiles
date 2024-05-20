@@ -19,10 +19,3 @@
   when: dockitem_exists.rc >0 or
         dockitem_exists.rc == 0 and current_section == 'recent-apps'
   tags: ['dock']
-
-- name: Pause for 7 seconds between dock changes.
-  ansible.builtin.pause:
-    seconds: 7
-  when: dockitem_exists.rc >0 or
-        dockitem_exists.rc == 0 and current_section == 'recent-apps'
-  tags: ['dock']

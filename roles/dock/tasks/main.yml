@@ -1,5 +1,5 @@
 ---
-- name: Install dockutil
-  homebrew:
-    name: dockutil
-    state: latest
+- name: "Dock | Remove Launchpad"
+  ansible.builtin.include_tasks: dock-remove.yml
+  vars:
+    item: Launchpad

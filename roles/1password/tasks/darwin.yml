@@ -21,3 +21,10 @@
     item:
       name: 1Password
       path: "/Applications/1Password.app/"
+
+- name: "1Password | Set correct position"
+  ansible.builtin.include_tasks: ../../dock/tasks/docker-position.yml
+  vars:
+    item:
+      name: 1Password
+      pos: 2
