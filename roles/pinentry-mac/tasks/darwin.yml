@@ -1,0 +1,8 @@
+---
+- name: "pinentry-mac | Install pinentry-mac"
+  homebrew:
+    name: pinentry-mac
+    state: latest
+    sudo_password: "{{ ansible_become_password | default(omit) }}"
+  become: "{{ (homebrew_user != ansible_user_id) | bool }}"
+  become_user: "{{ homebrew_user }}"
