@@ -1,2 +1,16 @@
 default_roles:
   - 1password
+  - bat
+  - composer
+  - fzf
+  - gnupg
+  - jq
+  - just
+  - make
+  - neovim
+  - node
+  - php
+  - pinentry-mac
+  - platformsh-cli
+  - symfony-cli
+  - zoxide
