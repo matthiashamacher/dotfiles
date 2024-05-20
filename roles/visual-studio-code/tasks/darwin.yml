@@ -1,7 +1,7 @@
 ---
-- name: "arc | Install arc"
+- name: "visual-studio-code | Install visual-studio-code"
   homebrew:
-    name: arc
+    name: visual-studio-code
     state: latest
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"

@@ -1,7 +1,7 @@
 ---
-- name: "arc | Install arc"
+- name: "spotify | Install spotify"
   homebrew:
-    name: arc
+    name: spotify
     state: latest
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"

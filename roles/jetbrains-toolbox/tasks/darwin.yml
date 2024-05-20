@@ -1,7 +1,7 @@
 ---
-- name: "arc | Install arc"
+- name: "jetbrains-toolbox | Install jetbrains-toolbox"
   homebrew:
-    name: arc
+    name: jetbrains-toolbox
     state: latest
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"

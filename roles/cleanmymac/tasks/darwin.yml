@@ -1,7 +1,7 @@
 ---
-- name: "arc | Install arc"
+- name: "cleanmymac | Install cleanmymac"
   homebrew:
-    name: arc
+    name: cleanmymac
     state: latest
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"

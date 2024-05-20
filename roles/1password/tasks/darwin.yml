@@ -6,3 +6,11 @@
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
+
+- name: "1Password | Install 1Password-cli"
+  homebrew:
+    name: 1password-cli
+    state: latest
+    sudo_password: "{{ ansible_become_password | default(omit) }}"
+  become: "{{ (homebrew_user != ansible_user_id) | bool }}"
+  become_user: "{{ homebrew_user }}"
