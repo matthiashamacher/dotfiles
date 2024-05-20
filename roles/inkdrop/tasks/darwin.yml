@@ -1,8 +1,22 @@
 ---
-- name: "inkdrop | Install inkdrop"
+- name: "Inkdrop | Install Inkdrop"
   homebrew:
     name: inkdrop
     state: latest
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
+
+- name: "Inkdrop | Add to dock"
+  ansible.builtin.include_tasks: ../../dock/tasks/dock-add.yml
+  vars:
+    item:
+      name: Inkdrop
+      path: "/Applications/Inkdrop.app/"
+
+- name: "Inkdrop | Set correct position"
+  ansible.builtin.include_tasks: ../../dock/tasks/dock-position.yml
+  vars:
+    item:
+      name: Inkdrop
+      pos: 2

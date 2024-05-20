@@ -6,3 +6,17 @@
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
+
+- name: "Arc | Add to dock"
+  ansible.builtin.include_tasks: ../../dock/tasks/dock-add.yml
+  vars:
+    item:
+      name: Arc
+      path: "/Applications/Arc.app/"
+
+- name: "Arc | Set correct position"
+  ansible.builtin.include_tasks: ../../dock/tasks/dock-position.yml
+  vars:
+    item:
+      name: Arc
+      pos: 3
