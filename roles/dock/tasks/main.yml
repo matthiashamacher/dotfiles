@@ -68,3 +68,10 @@
   ansible.builtin.include_tasks: dock-remove.yml
   vars:
     item: App Store
+
+- name: "Dock | Move Mail"
+  ansible.builtin.include_tasks: docker-position.yml
+  vars:
+    item:
+      name: Mail
+      position: 4
