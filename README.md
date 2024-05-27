@@ -21,12 +21,12 @@ This playbook includes a custom shell script located at `bin/dotfiles`. This scr
 > NOTE: You must follow required steps before running this command or things may become unusable until fixed.
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/TechDufus/dotfiles/main/bin/dotfiles)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/matthiashamacher/dotfiles/main/bin/dotfiles)"
 ```
 
 If you want to run only a specific role, you can specify the following bash command:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/TechDufus/dotfiles/main/bin/dotfiles | bash -s -- --tags comma,seperated,tags
+curl -fsSL https://raw.githubusercontent.com/TechDufus/matthiashamacher/main/bin/dotfiles | bash -s -- --tags comma,seperated,tags
 ```
 
 ### Update
