@@ -70,8 +70,8 @@
     item: App Store
 
 - name: "Dock | Move Mail"
-  ansible.builtin.include_tasks: docker-position.yml
+  ansible.builtin.include_tasks: dock-position.yml
   vars:
     item:
       name: Mail
-      position: 4
+      pos: 4
