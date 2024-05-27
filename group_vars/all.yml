@@ -32,6 +32,7 @@ default_roles:
   - visual-studio-code
   - warp
   - zoxide
+  - git
 
 git_user_name: "Matthias Hamacher"
 git_user_email: !vault |
