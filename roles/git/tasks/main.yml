@@ -12,6 +12,12 @@
     scope: global
     value: "{{ git_user_name }}"
 
+- name: "Git | Set user.signingkey"
+  community.general.git_config:
+    name: user.signingkey
+    scope: global
+    value: "{{ git_signingkey }}"
+
 - name: "Git | Set commit.gpgsign"
   community.general.git_config:
     name: commit.gpgsign
@@ -22,7 +28,7 @@
   community.general.git_config:
     name: gpg.program
     scope: global
-    value: /opt/homebrew/bin/gpg
+    value: /usr/local/bin/gpg
 
 - name: "Git | Set gpg.format"
   community.general.git_config:

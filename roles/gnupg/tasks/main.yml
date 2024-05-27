@@ -2,3 +2,51 @@
 - name: Run Darwin Tasks
   ansible.builtin.import_tasks: darwin.yml
   when: ansible_os_family == 'Darwin'
+
+- name: "gnupg | Configure ~/.gnupg/gpg-agent.conf"
+  ansible.builtin.copy:
+    src: gpg-agent.conf
+    dest: "{{ ansible_user_dir }}/.gnupg/gpg-agent.conf"
+    mode: "0600"
+
+- name: "gnupg | Configure ~/.gnupg/gpg.conf"
+  ansible.builtin.copy:
+    src: gpg.conf
+    dest: "{{ ansible_user_dir }}/.gnupg/gpg.conf"
+    mode: "0600"
+
+- name: "gnupg | Restart gpg agent"
+  ansible.builtin.command:
+    cmd: gpgconf --reload gpg-agent
+
+- name: "gnupg | Copy gpg keys"
+  ansible.builtin.copy:
+    dest: "/tmp/gpg-keys.gpg"
+    content: "{{ gpg_keys }}"
+    mode: "0600"
+  no_log: true
+
+- name: "gnupg | Import gpg keys"
+  ansible.builtin.command:
+    cmd: gpg --import /tmp/gpg-keys.gpg
+
+- name: "gnupg | Delete gpg keys file"
+  ansible.builtin.file:
+    path: "/tmp/gpg-keys.gpg"
+    state: absent
+
+- name: "gnupg | Copy ownertrust"
+  ansible.builtin.copy:
+    dest: "/tmp/ownertrust-gpg.txt"
+    content: "{{ gpg_ownertrust }}"
+    mode: "0600"
+  no_log: true
+
+- name: "gnupg | Import ownertrust"
+  ansible.builtin.command:
+    cmd: gpg --import-ownertrust /tmp/ownertrust-gpg.txt
+
+- name: "gnupg | Delete ownertrust file"
+  ansible.builtin.file:
+    path: "/tmp/ownertrust-gpg.txt"
+    state: absent
