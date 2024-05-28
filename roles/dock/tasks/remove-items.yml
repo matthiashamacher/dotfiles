@@ -1,0 +1,75 @@
+---
+- name: "Dock | Remove Launchpad"
+  ansible.builtin.include_tasks: abstracts/dock-remove.yml
+  vars:
+    item: Launchpad
+
+- name: "Dock | Remove Safari"
+  ansible.builtin.include_tasks: abstracts/dock-remove.yml
+  vars:
+    item: Safari
+
+- name: "Dock | Remove Messages"
+  ansible.builtin.include_tasks: abstracts/dock-remove.yml
+  vars:
+    item: Messages
+
+- name: "Dock | Remove Maps"
+  ansible.builtin.include_tasks: abstracts/dock-remove.yml
+  vars:
+    item: Maps
+
+- name: "Dock | Remove Photos"
+  ansible.builtin.include_tasks: abstracts/dock-remove.yml
+  vars:
+    item: Photos
+
+- name: "Dock | Remove FaceTime"
+  ansible.builtin.include_tasks: abstracts/dock-remove.yml
+  vars:
+    item: FaceTime
+
+- name: "Dock | Remove Calendar"
+  ansible.builtin.include_tasks: abstracts/dock-remove.yml
+  vars:
+    item: Calendar
+
+- name: "Dock | Remove Contacts"
+  ansible.builtin.include_tasks: abstracts/dock-remove.yml
+  vars:
+    item: Contacts
+
+- name: "Dock | Remove Reminders"
+  ansible.builtin.include_tasks: abstracts/dock-remove.yml
+  vars:
+    item: Reminders
+
+- name: "Dock | Remove Notes"
+  ansible.builtin.include_tasks: abstracts/dock-remove.yml
+  vars:
+    item: Notes
+
+- name: "Dock | Remove Freeform"
+  ansible.builtin.include_tasks: abstracts/dock-remove.yml
+  vars:
+    item: Freeform
+
+- name: "Dock | Remove TV"
+  ansible.builtin.include_tasks: abstracts/dock-remove.yml
+  vars:
+    item: TV
+
+- name: "Dock | Remove Music"
+  ansible.builtin.include_tasks: abstracts/dock-remove.yml
+  vars:
+    item: Music
+
+- name: "Dock | Remove App Store"
+  ansible.builtin.include_tasks: abstracts/dock-remove.yml
+  vars:
+    item: App Store
+
+- name: "Dock | Remove System Settings"
+  ansible.builtin.include_tasks: abstracts/dock-remove.yml
+  vars:
+    item: System Settings

@@ -1,77 +1,14 @@
 ---
-- name: "Dock | Remove Launchpad"
-  ansible.builtin.include_tasks: dock-remove.yml
-  vars:
-    item: Launchpad
+- name: "Dock | Install dockutil"
+  homebrew:
+    name: dockutil
+    state: latest
+    sudo_password: "{{ ansible_become_password | default(omit) }}"
+  become: "{{ (homebrew_user != ansible_user_id) | bool }}"
+  become_user: "{{ homebrew_user }}"
 
-- name: "Dock | Remove Safari"
-  ansible.builtin.include_tasks: dock-remove.yml
-  vars:
-    item: Safari
+- name: "Dock | Remove items"
+  ansible.builtin.include_tasks: remove-items.yml
 
-- name: "Dock | Remove Messages"
-  ansible.builtin.include_tasks: dock-remove.yml
-  vars:
-    item: Messages
-
-- name: "Dock | Remove Maps"
-  ansible.builtin.include_tasks: dock-remove.yml
-  vars:
-    item: Maps
-
-- name: "Dock | Remove Photos"
-  ansible.builtin.include_tasks: dock-remove.yml
-  vars:
-    item: Photos
-
-- name: "Dock | Remove FaceTime"
-  ansible.builtin.include_tasks: dock-remove.yml
-  vars:
-    item: FaceTime
-
-- name: "Dock | Remove Calendar"
-  ansible.builtin.include_tasks: dock-remove.yml
-  vars:
-    item: Calendar
-
-- name: "Dock | Remove Contacts"
-  ansible.builtin.include_tasks: dock-remove.yml
-  vars:
-    item: Contacts
-
-- name: "Dock | Remove Reminders"
-  ansible.builtin.include_tasks: dock-remove.yml
-  vars:
-    item: Reminders
-
-- name: "Dock | Remove Notes"
-  ansible.builtin.include_tasks: dock-remove.yml
-  vars:
-    item: Notes
-
-- name: "Dock | Remove Freeform"
-  ansible.builtin.include_tasks: dock-remove.yml
-  vars:
-    item: Freeform
-
-- name: "Dock | Remove TV"
-  ansible.builtin.include_tasks: dock-remove.yml
-  vars:
-    item: TV
-
-- name: "Dock | Remove Music"
-  ansible.builtin.include_tasks: dock-remove.yml
-  vars:
-    item: Music
-
-- name: "Dock | Remove App Store"
-  ansible.builtin.include_tasks: dock-remove.yml
-  vars:
-    item: App Store
-
-- name: "Dock | Move Mail"
-  ansible.builtin.include_tasks: dock-position.yml
-  vars:
-    item:
-      name: Mail
-      pos: 4
+- name: "Dock | Add items"
+  ansible.builtin.include_tasks: add-items.yml

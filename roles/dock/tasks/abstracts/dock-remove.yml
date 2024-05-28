@@ -8,12 +8,9 @@
     "No such file or directory" in dockitem_exists.stdout
     or "command not found" in dockitem_exists.stdout
 
-- name: Ensure Dock item {{ item }} is removed
+- name: "Ensure Dock item {{ item }} is removed"
   ansible.builtin.command:
     cmd: dockutil --remove '{{ item }}'
   when: dockitem_exists.rc  == 0
-
-- name: Pause for 7 seconds between dock changes
-  ansible.builtin.pause:
-    seconds: 7
-  when: dockitem_exists.rc == 0
+  notify:
+    - "Wait 7 seconds"

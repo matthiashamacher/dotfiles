@@ -1,0 +1,80 @@
+---
+- name: "Dock | Add 1Password"
+  ansible.builtin.include_tasks: abstracts/dock-add-position.yml
+  vars:
+    item:
+      name: 1Password
+      path: "/Applications/1Password.app/"
+      position: 0
+
+- name: "Dock | Add Inkdrop"
+  ansible.builtin.include_tasks: abstracts/dock-add-after.yml
+  vars:
+    item:
+      name: Inkdrop
+      path: "/Applications/Inkdrop.app/"
+      after: 1Password
+
+- name: "Dock | Add Arc"
+  ansible.builtin.include_tasks: abstracts/dock-add-after.yml
+  vars:
+    item:
+      name: Arc
+      path: "/Applications/Arc.app/"
+      after: Inkdrop
+
+- name: "Dock | Add Slack"
+  ansible.builtin.include_tasks: abstracts/dock-add-after.yml
+  vars:
+    item:
+      name: Slack
+      path: "/Applications/Slack.app/"
+      after: Arc
+
+- name: "Dock | Add Mail"
+  ansible.builtin.include_tasks: abstracts/dock-add-after.yml
+  vars:
+    item:
+      name: Mail
+      path: "/Applications/Mail.app/"
+      after: Slack
+
+- name: "Dock | Add Warp"
+  ansible.builtin.include_tasks: abstracts/dock-add-after.yml
+  vars:
+    item:
+      name: Warp
+      path: "/Applications/Warp.app/"
+      after: Mail
+
+- name: "Dock | Add Tower"
+  ansible.builtin.include_tasks: abstracts/dock-add-after.yml
+  vars:
+    item:
+      name: Tower
+      path: "/Applications/Tower.app/"
+      after: Warp
+
+- name: "Dock | Add Visual Studio Code"
+  ansible.builtin.include_tasks: abstracts/dock-add-after.yml
+  vars:
+    item:
+      name: Visual Studio Code
+      path: "/Applications/Visual Studio Code.app/"
+      after: Tower
+
+
+## Spacer
+- name: "Dock | Add important app spacer"
+  ansible.builtin.include_tasks: abstracts/dock-add-spacer.yml
+  vars:
+    item:
+      type: small-spacer
+      after: Arc
+
+- name: "Dock | Add messenger spacer"
+  ansible.builtin.include_tasks: abstracts/dock-add-spacer.yml
+  vars:
+    item:
+      type: small-spacer
+      after: Mail
