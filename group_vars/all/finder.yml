@@ -1,0 +1,16 @@
+---
+projects_volume_prefix: "/Volumes/Projects"
+
+projects_github_folders_prefi: Github
+projects_github_folders:
+  - Pimcore
+
+projects_private_folders_prefix: Private
+projects_private_folders:
+  - Advent of Code
+  - Random Stuff
+  - Random Stuff/TLDR Mail Parser
+  - Tafel Meppen
+
+projects_work_folders_prefix: "{{ vault_projects_work_folders_prefix }}"
+projects_work_folders: "{{ vault_projects_work_folders }}"

@@ -11,3 +11,5 @@
 
 - name: "Disk | Create Projects Volume"
   command: "diskutil apfs addVolume {{ disk_container }} apfs Projects"
+  when:
+  - "'Projects' not in diskutil_list.stdout"
