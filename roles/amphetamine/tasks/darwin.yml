@@ -2,4 +2,4 @@
 - name: "Amphetamine | Install Amphetamine"
   command: "mas install 937984704"
   when:
-    - "'937984704' in mas_installed_apps"
+    - "'937984704' not in mas_installed_apps"

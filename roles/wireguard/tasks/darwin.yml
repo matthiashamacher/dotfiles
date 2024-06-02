@@ -2,7 +2,7 @@
 - name: "WireGuard | Install WireGuard"
   command: "mas install 1451685025"
   when:
-    - "'1451685025' in mas_installed_apps"
+    - "'1451685025' not in mas_installed_apps"
 
 - name: "WireGuard | Add temporary WireGuard config folder"
   ansible.builtin.file:
@@ -10,7 +10,7 @@
     state: directory
     mode: "0755"
   when:
-    - "'1451685025' in mas_installed_apps"
+    - "'1451685025' not in mas_installed_apps"
 
 - name: "WireGuard | Copying configs"
   copy:
@@ -22,17 +22,17 @@
     loop_var: wireguard_config_item
   with_items: "{{ wireguard_config | default({}) | dict2items }}"
   when:
-    - "'1451685025' in mas_installed_apps"
+    - "'1451685025' not in mas_installed_apps"
 
 - name: "WireGuard | Import Wireguard Configs"
   ansible.builtin.pause:
     prompt: Manually import the config files in the App. The files are stored in ~/Documents/WireGuard. If you are done press ENTER
   when:
-    - "'1451685025' in mas_installed_apps"
+    - "'1451685025' not in mas_installed_apps"
 
 - name: "WireGuard | Delete configs"
   ansible.builtin.file:
     path: "{{ ansible_user_dir }}/Documents/WireGuard"
     state: absent
   when:
-    - "'1451685025' in mas_installed_apps"
+    - "'1451685025' not in mas_installed_apps"
