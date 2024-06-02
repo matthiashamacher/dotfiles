@@ -1,0 +1,6 @@
+---
+- name: "WireGuard | Install WireGuard"
+  command: "mas install 1451685025"
+  register: result
+  changed_when:
+    - "'Downloading' in result.stdout"

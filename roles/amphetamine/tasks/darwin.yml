@@ -1,0 +1,6 @@
+---
+- name: "Amphetamine | Install Amphetamine"
+  command: "mas install 937984704"
+  register: result
+  changed_when:
+    - "'Downloading' in result.stdout"
