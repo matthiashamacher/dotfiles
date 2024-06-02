@@ -1,7 +1,7 @@
 ---
-- name: "bat | Install bat"
+- name: "arc | Install arc"
   homebrew:
-    name: bat
+    name: arc
     state: latest
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
