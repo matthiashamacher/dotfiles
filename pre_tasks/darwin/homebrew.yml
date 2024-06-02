@@ -21,7 +21,7 @@
   changed_when: false
   check_mode: false
 
-- name: Determine ourdated packages
+- name: Determine installed packages
   set_fact:
     homebrew_installed_packages: installed_result.stdout
 

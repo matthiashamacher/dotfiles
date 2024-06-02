@@ -1,6 +1,5 @@
 ---
 - name: "Amphetamine | Install Amphetamine"
   command: "mas install 937984704"
-  register: result
-  changed_when:
-    - "'Downloading' in result.stdout"
+  when:
+    - "'937984704' in mas_installed_apps"
