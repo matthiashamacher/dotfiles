@@ -9,6 +9,19 @@ This repo is heavily influenced by [TechDufus](https://github.com/TechDufus/dotf
 
 This Ansible playbook only supports `MacOS (Darwin)` distribution. This is by design to provide a consistent development experience across hosts.
 
+### vault.secret
+
+The `vault.secret` file allows you to encrypt values with `Ansible vault` and store them securely in source control.
+
+To then encrypt values with your vault password use the following:
+
+```bash
+$ ansible-vault encrypt_string --vault-password-file $HOME/.ansible-vault/vault.secret "mynewsecret" --name "MY_SECRET_VAR"
+$ cat myfile.conf | ansible-vault encrypt_string --vault-password-file $HOME/.ansible-vault/vault.secret --stdin-name "myfile"
+```
+
+> NOTE: This file will automatically be detected by the playbook when running `dotfiles` command to decrypt values. Read more on Ansible Vault [here](https://docs.ansible.com/ansible/latest/user_guide/vault.html).
+
 
 ## Usage
 
