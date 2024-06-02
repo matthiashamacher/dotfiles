@@ -148,7 +148,7 @@ function darwin_setup() {
         _task "Installing Homebrew"
         _cmd '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
     fi
-    if [ -x "$(command -v ansible)" ]; then
+    if ! [ -x "$(command -v ansible)" ]; then
         _task "Installing Ansible"
         _cmd "brew install ansible"
         _task "Configuring ansible"
@@ -161,10 +161,6 @@ function darwin_setup() {
     fi
     _task "Installing watchdog"
     _cmd "python3 -m pip install watchdog --break-system-packages"
-    if [ -x "$(command -v dockutil)"]; then
-      _task "Installing dockutil"
-      _cmd "brew install dockutil"
-    fi
 }
 
 update_ansible_galaxy() {
