@@ -1,8 +1,10 @@
 ---
-- name: "rectangle | Install rectangle"
+- name: "Rectangle | Install Rectangle"
   homebrew:
     name: rectangle
     state: latest
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
+  when:
+    - "'rectangle' in homebrew_outdated_packages or 'rectangle' in homebrew_installed_packages"

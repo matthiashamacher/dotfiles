@@ -1,8 +1,10 @@
 ---
-- name: "orbstack | Install orbstack"
+- name: "Orbstack | Install Orbstack"
   homebrew:
     name: orbstack
     state: latest
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
+  when:
+    - "'orbstack' in homebrew_outdated_packages or 'orbstack' in homebrew_installed_packages"

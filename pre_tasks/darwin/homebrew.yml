@@ -14,3 +14,33 @@
   command: "brew --cache"
   changed_when: false
   check_mode: false
+
+- name: "Check installed packages"
+  command: "brew list"
+  register: installed_result
+  changed_when: false
+  check_mode: false
+
+- name: Determine ourdated packages
+  set_fact:
+    homebrew_installed_packages: installed_result.stdout
+
+- name: "Check for taps"
+  command: "brew tap"
+  register: tap_result
+  changed_when: false
+  check_mode: false
+
+- name: Determine taps
+  set_fact:
+    homebrew_taps: tap_result.stdout
+
+- name: "Check for outdated packages"
+  command: "brew outdated"
+  register: outdated_result
+  changed_when: false
+  check_mode: false
+
+- name: Determine outdated packages
+  set_fact:
+    homebrew_outdated_packages: outdated_result.stdout

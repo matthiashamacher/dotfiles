@@ -1,8 +1,10 @@
 ---
-- name: "spotify | Install spotify"
+- name: "Spotify | Install Spotify"
   homebrew:
     name: spotify
     state: latest
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
+  when:
+    - "'spotify' in homebrew_outdated_packages or 'spotify' in homebrew_installed_packages"

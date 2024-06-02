@@ -1,8 +1,10 @@
 ---
-- name: "displaylink | Install displaylink"
+- name: "DisplayLink | Install DisplayLink"
   homebrew:
     name: displaylink
     state: latest
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
+  when:
+    - "'displaylink' in homebrew_outdated_packages or 'displaylink' in homebrew_installed_packages"

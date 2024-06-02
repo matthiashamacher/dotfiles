@@ -1,8 +1,10 @@
 ---
-- name: "cleanshot | Install cleanshot"
+- name: "CleanShot | Install CleanShot"
   homebrew:
     name: cleanshot
     state: latest
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
+  when:
+    - "'cleanshot' in homebrew_outdated_packages or 'cleanshot' in homebrew_installed_packages"

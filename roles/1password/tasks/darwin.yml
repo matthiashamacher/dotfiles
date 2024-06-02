@@ -6,6 +6,8 @@
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
+  when:
+    - "'1password' in homebrew_outdated_packages or '1password' in homebrew_installed_packages"
 
 - name: "1Password | Install 1Password-cli"
   homebrew:
@@ -14,3 +16,5 @@
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
+  when:
+    - "'1password-cli' in homebrew_outdated_packages or '1password-cli' in homebrew_installed_packages"

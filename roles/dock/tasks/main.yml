@@ -6,9 +6,16 @@
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
+  when:
+    - "'dockutil' in homebrew_outdated_packages or 'dockutil' in homebrew_installed_packages"
+    - ansible_os_family == 'Darwin'
 
 - name: "Dock | Remove items"
   ansible.builtin.include_tasks: remove-items.yml
+  when:
+    - ansible_os_family == 'Darwin'
 
 - name: "Dock | Add items"
   ansible.builtin.include_tasks: add-items.yml
+  when: 
+    - ansible_os_family == 'Darwin'

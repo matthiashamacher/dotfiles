@@ -1,8 +1,10 @@
 ---
-- name: "jetbrains-toolbox | Install jetbrains-toolbox"
+- name: "JetBrains Toolbox | Install JetBrains Toolbox"
   homebrew:
     name: jetbrains-toolbox
     state: latest
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
+  when:
+    - "'jetbrains-toolbox' in homebrew_outdated_packages or 'jetbrains-toolbox' in homebrew_installed_packages"
