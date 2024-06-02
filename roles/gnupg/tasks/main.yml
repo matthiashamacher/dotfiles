@@ -25,21 +25,31 @@
   ansible.builtin.command:
     cmd: gpgconf --reload gpg-agent
 
+- name: "gnupg | Check for keys"
+  command: gpg --list-keys
+  register: keys
+
 - name: "gnupg | Copy gpg keys"
   ansible.builtin.copy:
     dest: "/tmp/gpg-keys.gpg"
     content: "{{ gpg_keys }}"
     mode: "0600"
   no_log: true
+  when:
+    - "'39EE597BDAF8C4F39CED2708E1170DD5A5F43A63' not in keys.stdout or '195D56FF708A71582624D63993B4DDA9DDC53860' not in keys.stdout or 'FC9AE97AB77427D3D673CBB24C3B94642870B7E8' not in keys.stdout"
 
 - name: "gnupg | Import gpg keys"
   ansible.builtin.command:
     cmd: gpg --import /tmp/gpg-keys.gpg
+  when:
+    - "'39EE597BDAF8C4F39CED2708E1170DD5A5F43A63' not in keys.stdout or '195D56FF708A71582624D63993B4DDA9DDC53860' not in keys.stdout or 'FC9AE97AB77427D3D673CBB24C3B94642870B7E8' not in keys.stdout"
 
 - name: "gnupg | Delete gpg keys file"
   ansible.builtin.file:
     path: "/tmp/gpg-keys.gpg"
     state: absent
+  when:
+    - "'39EE597BDAF8C4F39CED2708E1170DD5A5F43A63' not in keys.stdout or '195D56FF708A71582624D63993B4DDA9DDC53860' not in keys.stdout or 'FC9AE97AB77427D3D673CBB24C3B94642870B7E8' not in keys.stdout"
 
 - name: "gnupg | Copy ownertrust"
   ansible.builtin.copy:
@@ -47,12 +57,18 @@
     content: "{{ gpg_ownertrust }}"
     mode: "0600"
   no_log: true
+  when:
+    - "'ultimate' not in keys.stdout"
 
 - name: "gnupg | Import ownertrust"
   ansible.builtin.command:
     cmd: gpg --import-ownertrust /tmp/ownertrust-gpg.txt
+  when:
+    - "'ultimate' not in keys.stdout"
 
 - name: "gnupg | Delete ownertrust file"
   ansible.builtin.file:
     path: "/tmp/ownertrust-gpg.txt"
     state: absent
+  when:
+    - "'ultimate' not in keys.stdout"
