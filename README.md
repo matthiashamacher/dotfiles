@@ -26,7 +26,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/matthiashamacher/dotfile
 
 If you want to run only a specific role, you can specify the following bash command:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/TechDufus/matthiashamacher/main/bin/dotfiles | bash -s -- --tags comma,seperated,tags
+curl -fsSL https://raw.githubusercontent.com/matthiashamacher/dotfiles/main/bin/dotfiles | bash -s -- --tags comma,seperated,tags
 ```
 
 ### Update

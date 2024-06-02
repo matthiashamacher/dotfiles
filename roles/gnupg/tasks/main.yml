@@ -3,6 +3,12 @@
   ansible.builtin.import_tasks: darwin.yml
   when: ansible_os_family == 'Darwin'
 
+- name: "gnupg | Make sure ~/.gnupg exists"
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.gnupg"
+    state: directory
+    mode: "0700"
+
 - name: "gnupg | Configure ~/.gnupg/gpg-agent.conf"
   ansible.builtin.copy:
     src: gpg-agent.conf
