@@ -7,5 +7,5 @@
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
   when:
-    - "'inkdrop' in homebrew_outdated_packages or 'inkdrop' in homebrew_installed_packages"
+    - "'inkdrop' in homebrew_outdated_packages or 'inkdrop' not in homebrew_installed_packages"
   

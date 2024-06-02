@@ -7,4 +7,4 @@
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
   when:
-    - "'warp' in homebrew_outdated_packages or 'warp' in homebrew_installed_packages"
+    - "'warp' in homebrew_outdated_packages or 'warp' not in homebrew_installed_packages"

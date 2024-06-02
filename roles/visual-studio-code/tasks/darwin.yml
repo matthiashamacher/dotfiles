@@ -7,4 +7,4 @@
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
   when:
-    - "'visual-studio-code' in homebrew_outdated_packages or 'visual-studio-code' in homebrew_installed_packages"
+    - "'visual-studio-code' in homebrew_outdated_packages or 'visual-studio-code' not in homebrew_installed_packages"

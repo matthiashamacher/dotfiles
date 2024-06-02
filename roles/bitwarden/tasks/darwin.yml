@@ -7,4 +7,4 @@
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
   when:
-    - "'bitwarden' in homebrew_outdated_packages or 'bitwarden' in homebrew_installed_packages"
+    - "'bitwarden' in homebrew_outdated_packages or 'bitwarden' not in homebrew_installed_packages"

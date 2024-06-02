@@ -7,7 +7,7 @@
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
   when:
-    - "'mas' in homebrew_outdated_packages or 'mas' in homebrew_installed_packages"
+    - "'mas' in homebrew_outdated_packages or 'mas' not in homebrew_installed_packages"
 
 - name: "Check installed apps"
   command: "mas list"

@@ -7,4 +7,4 @@
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
   when:
-    - "'cleanmymac' in homebrew_outdated_packages or 'cleanmymac' in homebrew_installed_packages"
+    - "'cleanmymac' in homebrew_outdated_packages or 'cleanmymac' not in homebrew_installed_packages"

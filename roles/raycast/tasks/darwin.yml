@@ -7,4 +7,4 @@
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
   when:
-    - "'raycast' in homebrew_outdated_packages or 'raycast' in homebrew_installed_packages"
+    - "'raycast' in homebrew_outdated_packages or 'raycast' not in homebrew_installed_packages"

@@ -7,4 +7,4 @@
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
   when:
-    - "'pinentry-mac' in homebrew_outdated_packages or 'pinentry-mac' in homebrew_installed_packages"
+    - "'pinentry-mac' in homebrew_outdated_packages or 'pinentry-mac' not in homebrew_installed_packages"

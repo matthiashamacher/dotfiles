@@ -7,5 +7,5 @@
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
   when:
-    - "'tower' in homebrew_outdated_packages or 'tower' in homebrew_installed_packages"
+    - "'tower' in homebrew_outdated_packages or 'tower' not in homebrew_installed_packages"
   

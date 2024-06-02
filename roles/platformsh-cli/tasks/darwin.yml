@@ -15,4 +15,4 @@
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
   when:
-    - "'platformsh/tap/platformsh-cli' in homebrew_outdated_packages or 'platformsh-cli' in homebrew_installed_packages"
+    - "'platformsh/tap/platformsh-cli' in homebrew_outdated_packages or 'platformsh-cli' not in homebrew_installed_packages"

@@ -7,4 +7,4 @@
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
   when:
-    - "'php' in homebrew_outdated_packages or 'php' in homebrew_installed_packages"
+    - "'php' in homebrew_outdated_packages or 'php' not in homebrew_installed_packages"

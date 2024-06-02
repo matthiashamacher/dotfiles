@@ -7,4 +7,4 @@
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
   when:
-    - "'neovim' in homebrew_outdated_packages or 'neovim' in homebrew_installed_packages"
+    - "'neovim' in homebrew_outdated_packages or 'neovim' not in homebrew_installed_packages"
