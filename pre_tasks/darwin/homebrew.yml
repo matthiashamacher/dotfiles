@@ -6,6 +6,9 @@
 
 - name: "Update homebrew"
   command: "brew update --force"
+  register: result
+  changed_when:
+    - '"You can upgrade them with brew upgrade" in result.stdout'
 
 - name: "Initialise cache"
   command: "brew --cache"
