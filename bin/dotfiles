@@ -148,17 +148,17 @@ function darwin_setup() {
         _task "Installing Homebrew"
         _cmd '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
     fi
-    if [ -x "$(command -v ansible)" ]; then
+    # if [ -x "$(command -v ansible)" ]; then
         _task "Installing Ansible"
         _cmd "brew install ansible"
         _task "Configuring ansible"
-        _cmd "mkdir -p $CONFIG_DIR"
-        _cmd "echo 'localhost' > $CONFIG_DIR/inventory"
+        _cmd "mkdir -p ~/.ansible"
+        _cmd "echo 'localhost' > ~/.ansible/hosts"
         _cmd "mkdir -p ~/.ansible-vault"
         _cmd "touch $VAULT_SECRET"
         _task "Waiting for vault secret. Press enter to continue"
         _cmd "read -n 1 -s"
-    fi
+    # fi
     _task "Installing watchdog"
     _cmd "python3 -m pip install watchdog --break-system-packages"
     if [ -x "$(command -v dockutil)"]; then
