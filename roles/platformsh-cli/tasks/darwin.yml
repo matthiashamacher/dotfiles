@@ -5,7 +5,7 @@
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
   when:
-    - "'platformsh/tap' in homebrew_taps"
+    - "'platformsh/tap' not in homebrew_taps"
 
 - name: "platformsh-cli | Install platformsh-cli"
   homebrew:

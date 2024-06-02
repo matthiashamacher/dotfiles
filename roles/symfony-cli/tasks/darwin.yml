@@ -5,7 +5,7 @@
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
   when:
-    - "'symfony-cli/tap' in homebrew_taps"
+    - "'symfony-cli/tap' not in homebrew_taps"
 
 - name: "symfony-cli | Install symfony-cli"
   homebrew:
