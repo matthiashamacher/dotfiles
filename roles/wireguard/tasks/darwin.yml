@@ -4,3 +4,16 @@
   register: result
   changed_when:
     - "'Downloading' in result.stdout"
+
+- name: "WireGuard | Copying configs"
+  copy:
+    dest: "{{ ansible_user_dir }}/Desktop/{{ wireguard_config_item.key }}"
+    content: "{{ wireguard_config_item.value }}"
+    mode: "0755"
+  no_log: true
+  loop_control:
+    loop_var: wireguard_config_item
+  with_items: "{{ wireguard_config | default({}) | dict2items }}"
+
+- name: "WireGuard | Import Wireguard Configs"
+  ansible.builtin.pause:
