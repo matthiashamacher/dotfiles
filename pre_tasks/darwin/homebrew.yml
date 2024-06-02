@@ -23,7 +23,7 @@
 
 - name: Determine installed packages
   set_fact:
-    homebrew_installed_packages: installed_result.stdout
+    homebrew_installed_packages: "{{ installed_result.stdout }}"
 
 - name: "Check for taps"
   command: "brew tap"
@@ -33,7 +33,7 @@
 
 - name: Determine taps
   set_fact:
-    homebrew_taps: tap_result.stdout
+    homebrew_taps: "{{ tap_result.stdout }}"
 
 - name: "Check for outdated packages"
   command: "brew outdated"
@@ -43,4 +43,4 @@
 
 - name: Determine outdated packages
   set_fact:
-    homebrew_outdated_packages: outdated_result.stdout
+    homebrew_outdated_packages: "{{ outdated_result.stdout }}"

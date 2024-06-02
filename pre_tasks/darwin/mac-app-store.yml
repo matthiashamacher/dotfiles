@@ -17,4 +17,4 @@
 
 - name: Determine installed apps
   set_fact:
-    mas_installed_apps: installed_result.stdout
+    mas_installed_apps: "{{ installed_result.stdout }}"
