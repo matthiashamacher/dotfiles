@@ -159,8 +159,10 @@ function darwin_setup() {
         _task "Waiting for vault secret. Press enter to continue"
         _cmd "read -n 1 -s"
     fi
-    _task "Installing watchdog"
-    _cmd "python3 -m pip install watchdog --break-system-packages"
+    if ! python3 -m pip show watchdog &> /dev/null; then
+      _task "Installing watchdog"
+      _cmd "python3 -m pip install watchdog --break-system-packages"
+    fi
 }
 
 update_ansible_galaxy() {
