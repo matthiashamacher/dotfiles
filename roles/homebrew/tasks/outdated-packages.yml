@@ -1,0 +1,10 @@
+---
+- name: "Homebrew | Check for outdated packages"
+  command: "brew outdated"
+  register: outdated_result
+  changed_when: false
+  check_mode: false
+
+- name: Homebrew | Determine outdated packages
+  set_fact:
+    homebrew_outdated_packages: "{{ outdated_result.stdout }}"

@@ -6,6 +6,8 @@
   become_user: "{{ homebrew_user }}"
   when:
     - "'symfony-cli/tap' not in homebrew_taps"
+  notify:
+    - Get taps
 
 - name: "symfony-cli | Install symfony-cli"
   homebrew:
@@ -16,3 +18,6 @@
   become_user: "{{ homebrew_user }}"
   when:
     - "'symfony-cli/tap/symfony-cli' in homebrew_outdated_packages or 'symfony-cli' not in homebrew_installed_packages"
+  notify:
+    - Get installed packages
+    - Get outdated packages

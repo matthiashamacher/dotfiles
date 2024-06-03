@@ -8,3 +8,6 @@
   become_user: "{{ homebrew_user }}"
   when:
     - "'visual-studio-code' in homebrew_outdated_packages or 'visual-studio-code' not in homebrew_installed_packages"
+  notify:
+    - Get installed packages
+    - Get outdated packages

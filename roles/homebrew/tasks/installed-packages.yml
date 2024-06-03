@@ -1,0 +1,10 @@
+---
+- name: "Homebrew | Check installed packages"
+  command: "brew list"
+  register: installed_result
+  changed_when: false
+  check_mode: false
+
+- name: Homebrew | Determine installed packages
+  set_fact:
+    homebrew_installed_packages: "{{ installed_result.stdout }}"

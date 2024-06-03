@@ -8,6 +8,9 @@
   become_user: "{{ homebrew_user }}"
   when:
     - "'mas' in homebrew_outdated_packages or 'mas' not in homebrew_installed_packages"
+  notify:
+    - Get installed packages
+    - Get outdated packages
 
 - name: "Mac App Store CLI (mas) | Check installed apps"
   command: "mas list"

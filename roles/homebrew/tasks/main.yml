@@ -1,0 +1,19 @@
+---
+- name: Homebrew | Determine Homebrew ownership variables
+  set_fact:
+    homebrew_user: '{{ homebrew_user | default(ansible_user_id) }}'
+    homebrew_group: '{{ homebrew_group | default(ansible_user_gid) }}'
+
+- name: Homebrew | Update homebrew
+  command: "brew update --force"
+  register: result
+  changed_when:
+    - '"You can upgrade them with brew upgrade" in result.stdout'
+
+- name: Homebrew | Initialise cache
+  command: "brew --cache"
+  changed_when: false
+
+- import_tasks: taps.yml
+- import_tasks: installed-packages.yml
+- import_tasks: outdated-packages.yml

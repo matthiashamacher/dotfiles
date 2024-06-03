@@ -6,6 +6,8 @@
   become_user: "{{ homebrew_user }}"
   when:
     - "'platformsh/tap' not in homebrew_taps"
+  notify:
+    - Get taps
 
 - name: "platformsh-cli | Install platformsh-cli"
   homebrew:
@@ -16,3 +18,6 @@
   become_user: "{{ homebrew_user }}"
   when:
     - "'platformsh/tap/platformsh-cli' in homebrew_outdated_packages or 'platformsh-cli' not in homebrew_installed_packages"
+  notify:
+    - Get installed packages
+    - Get outdated packages

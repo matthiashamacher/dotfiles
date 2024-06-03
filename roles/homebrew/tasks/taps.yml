@@ -1,0 +1,10 @@
+---
+- name: "Homebrew | Check for taps"
+  command: "brew tap"
+  register: tap_result
+  changed_when: false
+  check_mode: false
+
+- name: Homebrew | Determine taps
+  set_fact:
+    homebrew_taps: "{{ tap_result.stdout }}"

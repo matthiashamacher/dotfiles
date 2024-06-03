@@ -8,3 +8,6 @@
   become_user: "{{ homebrew_user }}"
   when:
     - "'cleanmymac' in homebrew_outdated_packages or 'cleanmymac' not in homebrew_installed_packages"
+  notify:
+    - Get installed packages
+    - Get outdated packages

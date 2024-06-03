@@ -8,4 +8,7 @@
   become_user: "{{ homebrew_user }}"
   when:
     - "'slack' in homebrew_outdated_packages or 'slack' not in homebrew_installed_packages"
+  notify:
+    - Get installed packages
+    - Get outdated packages
   

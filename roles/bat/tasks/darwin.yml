@@ -8,3 +8,6 @@
   become_user: "{{ homebrew_user }}"
   when:
     - "'bat' in homebrew_outdated_packages or 'bat' not in homebrew_installed_packages"
+  notify:
+    - Get installed packages
+    - Get outdated packages

@@ -8,3 +8,6 @@
   become_user: "{{ homebrew_user }}"
   when:
     - "'rectangle' in homebrew_outdated_packages or 'rectangle' not in homebrew_installed_packages"
+  notify:
+    - Get installed packages
+    - Get outdated packages

@@ -8,4 +8,7 @@
   become_user: "{{ homebrew_user }}"
   when:
     - "'tower' in homebrew_outdated_packages or 'tower' not in homebrew_installed_packages"
+  notify:
+    - Get installed packages
+    - Get outdated packages
   

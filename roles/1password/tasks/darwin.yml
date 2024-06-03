@@ -8,6 +8,9 @@
   become_user: "{{ homebrew_user }}"
   when:
     - "'1password' in homebrew_outdated_packages or '1password' not in homebrew_installed_packages"
+  notify:
+    - Get installed packages
+    - Get outdated packages
 
 - name: "1Password | Install 1Password-cli"
   homebrew:
@@ -18,3 +21,6 @@
   become_user: "{{ homebrew_user }}"
   when:
     - "'1password-cli' in homebrew_outdated_packages or '1password-cli' not in homebrew_installed_packages"
+  notify:
+    - Get installed packages
+    - Get outdated packages
