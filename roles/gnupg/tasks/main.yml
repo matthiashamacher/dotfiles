@@ -34,20 +34,20 @@
     mode: "0600"
   no_log: true
   when:
-    - "'39EE597BDAF8C4F39CED2708E1170DD5A5F43A63' not in keys.stdout or '195D56FF708A71582624D63993B4DDA9DDC53860' not in keys.stdout or 'FC9AE97AB77427D3D673CBB24C3B94642870B7E8' not in keys.stdout"
+    - "'m.hamacher@basecom.de' not in keys.stdout or 'm.hamacher@mhamacher.de' not in keys.stdout or 'mhamacher@mhamacher.dev' not in keys.stdout"
 
 - name: "gnupg | Import gpg keys"
   ansible.builtin.command:
     cmd: gpg --import /tmp/gpg-keys.gpg
   when:
-    - "'39EE597BDAF8C4F39CED2708E1170DD5A5F43A63' not in keys.stdout or '195D56FF708A71582624D63993B4DDA9DDC53860' not in keys.stdout or 'FC9AE97AB77427D3D673CBB24C3B94642870B7E8' not in keys.stdout"
+    - "'m.hamacher@basecom.de' not in keys.stdout or 'm.hamacher@mhamacher.de' not in keys.stdout or 'mhamacher@mhamacher.dev' not in keys.stdout"
 
 - name: "gnupg | Delete gpg keys file"
   ansible.builtin.file:
     path: "/tmp/gpg-keys.gpg"
     state: absent
   when:
-    - "'39EE597BDAF8C4F39CED2708E1170DD5A5F43A63' not in keys.stdout or '195D56FF708A71582624D63993B4DDA9DDC53860' not in keys.stdout or 'FC9AE97AB77427D3D673CBB24C3B94642870B7E8' not in keys.stdout"
+    - "'m.hamacher@basecom.de' not in keys.stdout or 'm.hamacher@mhamacher.de' not in keys.stdout or 'mhamacher@mhamacher.dev' not in keys.stdout"
 
 - name: "gnupg | Copy ownertrust"
   ansible.builtin.copy:
