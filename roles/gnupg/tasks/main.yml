@@ -9,21 +9,19 @@
     state: directory
     mode: "0700"
 
-- name: "gnupg | Configure ~/.gnupg/gpg-agent.conf"
-  ansible.builtin.copy:
-    src: gpg-agent.conf
-    dest: "{{ ansible_user_dir }}/.gnupg/gpg-agent.conf"
-    mode: "0600"
-
 - name: "gnupg | Configure ~/.gnupg/gpg.conf"
   ansible.builtin.copy:
     src: gpg.conf
     dest: "{{ ansible_user_dir }}/.gnupg/gpg.conf"
     mode: "0600"
 
-- name: "gnupg | Restart gpg agent"
-  ansible.builtin.command:
-    cmd: gpgconf --reload gpg-agent
+- name: "gnupg | Configure ~/.gnupg/gpg-agent.conf"
+  ansible.builtin.copy:
+    src: gpg-agent.conf
+    dest: "{{ ansible_user_dir }}/.gnupg/gpg-agent.conf"
+    mode: "0600"
+  notify:
+    - Restart gpg agent
 
 - name: "gnupg | Check for keys"
   command: gpg --list-keys

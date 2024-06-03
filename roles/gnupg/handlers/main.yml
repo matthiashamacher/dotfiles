@@ -1,0 +1,4 @@
+---
+- name: Restart gpg agent
+  ansible.builtin.command:
+    cmd: gpgconf --reload gpg-agent
