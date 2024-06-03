@@ -3,3 +3,5 @@
   command: "mas install 937984704"
   when:
     - "'937984704' not in mas_installed_apps"
+  notify:
+    - Get installed apps

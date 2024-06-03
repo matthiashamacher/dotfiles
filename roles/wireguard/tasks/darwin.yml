@@ -3,6 +3,8 @@
   command: "mas install 1451685025"
   when:
     - "'1451685025' not in mas_installed_apps"
+  notify:
+    - Get installed apps
 
 - name: "WireGuard | Add temporary WireGuard config folder"
   ansible.builtin.file:
