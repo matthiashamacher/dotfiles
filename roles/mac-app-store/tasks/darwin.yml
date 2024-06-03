@@ -1,5 +1,5 @@
 ---
-- name: Install mas (Mac App Store CLI)
+- name: "Mac App Store CLI (mas) | Install"
   homebrew:
     name: mas
     state: latest
@@ -9,12 +9,12 @@
   when:
     - "'mas' in homebrew_outdated_packages or 'mas' not in homebrew_installed_packages"
 
-- name: "Check installed apps"
+- name: "Mac App Store CLI (mas) | Check installed apps"
   command: "mas list"
   register: installed_result
   changed_when: false
   check_mode: false
 
-- name: Determine installed apps
+- name: Mac App Store CLI (mas) | Determine installed apps
   set_fact:
     mas_installed_apps: "{{ installed_result.stdout }}"

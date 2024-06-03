@@ -14,12 +14,6 @@
       when: ansible_os_family == 'Darwin'
       tags:
         - always
-    
-    - name: Setup Mac App Store
-      ansible.builtin.import_tasks: pre_tasks/darwin/mac-app-store.yml
-      when: ansible_os_family == 'Darwin'
-      tags:
-        - always
 
   tasks:
     - name: Set roles
