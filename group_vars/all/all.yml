@@ -39,3 +39,4 @@ default_roles:
   - warp
   - wireguard
   - zoxide
+  - zsh
