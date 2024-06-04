@@ -1,0 +1,26 @@
+---
+- name: "SSH | Copy SSH keys"
+  copy:
+    dest: "{{ ansible_user_dir }}/.ssh/{{ ssh_key_item.key }}"
+    content: "{{ ssh_key_item.value }}"
+    mode: "0600"
+  no_log: true
+  loop_control:
+    loop_var: ssh_key_item
+  with_items: "{{ ssh_keys | default({}) | dict2items }}"
+
+- name: SSH | Copy config
+  copy:
+    dest: "{{ ansible_user_dir }}/.ssh/config"
+    src: config
+    mode: "0600"
+
+- name: "SSH | Copy custom configs"
+  copy:
+    dest: "{{ ansible_user_dir }}/.ssh/configs/{{ ssh_config_item.key }}"
+    content: "{{ ssh_config_item.value }}"
+    mode: "0600"
+  no_log: true
+  loop_control:
+    loop_var: ssh_config_item
+  with_items: "{{ ssh_configs | default({}) | dict2items }}"

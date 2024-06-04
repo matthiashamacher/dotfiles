@@ -1,0 +1,13 @@
+Include ~/.orbstack/ssh/config
+
+Host *
+	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+
+# Include custom configs
+Include ~/.ssh/configs/*.config
+
+# BEGIN: Platform.sh certificate configuration
+Host *.platform.sh
+  Include /Users/matthiashamacher/.platformsh/ssh/*.config
+Host *
+# END: Platform.sh certificate configuration
