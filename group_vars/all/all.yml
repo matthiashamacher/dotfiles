@@ -32,6 +32,7 @@ default_roles:
   - rectangle
   - slack
   - spotify
+  - ssh
   - symfony-cli
   - tower
   - transmit

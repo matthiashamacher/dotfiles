@@ -1,5 +1,10 @@
 ---
-- name: "SSH | Copy SSH keys"
+- name: SSH | Ensure ~/.ssh directory exists
+  file:
+    path: "{{ ansible_user_dir }}/.ssh"
+    state: directory
+
+- name: SSH | Copy SSH keys
   copy:
     dest: "{{ ansible_user_dir }}/.ssh/{{ ssh_key_item.key }}"
     content: "{{ ssh_key_item.value }}"
@@ -15,7 +20,12 @@
     src: config
     mode: "0600"
 
-- name: "SSH | Copy custom configs"
+- name: SSH | Ensure ~/.ssh/configs directory exists
+  file:
+    path: "{{ ansible_user_dir }}/.ssh/configs"
+    state: directory
+
+- name: SSH | Copy custom configs
   copy:
     dest: "{{ ansible_user_dir }}/.ssh/configs/{{ ssh_config_item.key }}"
     content: "{{ ssh_config_item.value }}"
