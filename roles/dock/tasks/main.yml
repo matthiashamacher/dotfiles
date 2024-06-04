@@ -8,10 +8,10 @@
   become_user: "{{ homebrew_user }}"
   when:
     - "'dockutil' in homebrew_outdated_packages or 'dockutil' not in homebrew_installed_packages"
+    - ansible_os_family == 'Darwin'
   notify:
     - Get installed packages
     - Get outdated packages
-    - ansible_os_family == 'Darwin'
 
 - name: "Dock | Remove items"
   ansible.builtin.include_tasks: remove-items.yml
