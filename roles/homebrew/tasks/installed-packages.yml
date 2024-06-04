@@ -1,10 +1,13 @@
 ---
-- name: "Homebrew | Check installed packages"
+- name: Homebrew | Check installed packages
   command: "brew list"
   register: installed_result
-  changed_when: false
+  changed_when: 
+    - homebrew_installed_packages is undefined or installed_result.stdout != homebrew_installed_packages
   check_mode: false
 
 - name: Homebrew | Determine installed packages
   set_fact:
     homebrew_installed_packages: "{{ installed_result.stdout }}"
+  when:
+    - installed_result.changed

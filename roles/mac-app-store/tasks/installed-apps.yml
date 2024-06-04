@@ -2,9 +2,12 @@
 - name: Mac App Store CLI (mas) | Check installed apps
   command: "mas list"
   register: installed_result
-  changed_when: false
+  changed_when: 
+    - mas_installed_apps is undefined or installed_result.stdout != mas_installed_apps
   check_mode: false
 
 - name: Mac App Store CLI (mas) | Determine installed apps
   set_fact:
     mas_installed_apps: "{{ installed_result.stdout }}"
+  when:
+    - installed_result.changed

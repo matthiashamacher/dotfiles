@@ -6,8 +6,16 @@
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
+  register: homebrew_install_result
   when:
     - "'raycast' in homebrew_outdated_packages or 'raycast' not in homebrew_installed_packages"
-  notify:
-    - Get installed packages
-    - Get outdated packages
+
+- name: Update installed packages
+  include_tasks: roles/homebrew/tasks/installed-packages.yml
+  when:
+    - homebrew_install_result.changed
+
+- name: Update outdated packages
+  include_tasks: roles/homebrew/tasks/outdated-packages.yml
+  when:
+    - homebrew_install_result.changed

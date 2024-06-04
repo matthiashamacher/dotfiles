@@ -1,7 +1,11 @@
 ---
 - name: "Amphetamine | Install Amphetamine"
   command: "mas install 937984704"
+  register: mas_install_result
   when:
     - "'937984704' not in mas_installed_apps"
-  notify:
-    - Get installed apps
+
+- name: Update installed apps
+  include_tasks: roles/mac-app-store/tasks/installed-apps.yml
+  when:
+    - mas_install_result.changed

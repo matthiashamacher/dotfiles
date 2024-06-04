@@ -4,10 +4,14 @@
     name: platformsh/tap
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
+  register: homebrew_tap_result
   when:
     - "'platformsh/tap' not in homebrew_taps"
-  notify:
-    - Get taps
+
+- name: Update taps
+  include_tasks: roles/homebrew/tasks/taps.yml
+  when:
+    - homebrew_tap_result.changed
 
 - name: "platformsh-cli | Install platformsh-cli"
   homebrew:
@@ -16,8 +20,16 @@
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
+  register: homebrew_install_result
   when:
     - "'platformsh/tap/platformsh-cli' in homebrew_outdated_packages or 'platformsh-cli' not in homebrew_installed_packages"
-  notify:
-    - Get installed packages
-    - Get outdated packages
+
+- name: Update installed packages
+  include_tasks: roles/homebrew/tasks/installed-packages.yml
+  when:
+    - homebrew_install_result.changed
+
+- name: Update outdated packages
+  include_tasks: roles/homebrew/tasks/outdated-packages.yml
+  when:
+    - homebrew_install_result.changed

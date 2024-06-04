@@ -3,16 +3,22 @@
   set_fact:
     homebrew_user: '{{ homebrew_user | default(ansible_user_id) }}'
     homebrew_group: '{{ homebrew_group | default(ansible_user_gid) }}'
+  when:
+    - homebrew_user is undefined or homebrew_group is undefined
 
 - name: Homebrew | Update homebrew
   command: "brew update --force"
   register: result
   changed_when:
     - '"You can upgrade them with brew upgrade" in result.stdout'
+  when:
+    - homebrew_taps is undefined or homebrew_installed_packages is undefined or homebrew_outdated_packages is undefined
 
 - name: Homebrew | Initialise cache
   command: "brew --cache"
   changed_when: false
+  when:
+    - homebrew_taps is undefined or homebrew_installed_packages is undefined or homebrew_outdated_packages is undefined
 
 - import_tasks: taps.yml
 - import_tasks: installed-packages.yml
