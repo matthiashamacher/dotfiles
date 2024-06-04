@@ -6,3 +6,4 @@
     mode: "0600"
 
 - include_tasks: git-config.yml
+- include_tasks: repos.yml

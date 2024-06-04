@@ -1,0 +1,18 @@
+---
+- name: Git | Check which repos are already cloned
+  stat:
+    path: "{{ git_repo.path }}"
+  register: existing_repositories
+  loop_control:
+    loop_var: git_repo
+    label: "{{ git_repo.name }}"
+  loop: "{{ git_repos }}"
+  ignore_errors: true
+
+- name: Git | Clone missing repos
+  command: "git clone {{ item.git_repo.url }} {{ item.git_repo.path }}"
+  loop_control:
+    label: "{{ item.git_repo.name }}"
+  with_items: "{{ existing_repositories.results }}"
+  when:
+    - item.stat.exists == False
