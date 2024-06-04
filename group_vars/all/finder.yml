@@ -12,5 +12,15 @@ projects_private_folders:
   - Random Stuff/TLDR Mail Parser
   - Tafel Meppen
 
-projects_work_folders_prefix: "{{ vault_projects_work_folders_prefix }}"
-projects_work_folders: "{{ vault_projects_work_folders }}"
+projects_work_folders_prefix: basecom
+projects_work_folders:
+  - Pimcore
+  - Pimcore/Bundles
+  - Pimcore/Customers
+  - Pimcore/Teamwork
+  - Pimcore/Teamwork/External Resources
+  - Pimcore/Teamwork/Tools
+  - Pimcore/Teamwork/Training
+  - Pimcore/Templates
+  - Random Stuff
+  - Open Source
