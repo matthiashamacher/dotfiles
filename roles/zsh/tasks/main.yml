@@ -1,0 +1,30 @@
+---
+- name: zsh | Copy .zprofile
+  copy:
+    src: .zprofile
+    dest: "{{ ansible_user_dir }}/.zprofile"
+    mode: "0644"
+
+- name: zsh | Copy .profile
+  copy:
+    src: .zprofile
+    dest: "{{ ansible_user_dir }}/.profile"
+    mode: "0644"
+
+- name: zsh | Copy .aliases
+  copy:
+    src: .zprofile
+    dest: "{{ ansible_user_dir }}/.aliases"
+    mode: "0644"
+
+- name: zsh | Copy .functions
+  copy:
+    src: .zprofile
+    dest: "{{ ansible_user_dir }}/.functions"
+    mode: "0644"
+
+- name: zsh | Copy .exports
+  copy:
+    src: .zprofile
+    dest: "{{ ansible_user_dir }}/.exports"
+    mode: "0644"
