@@ -1,13 +1,13 @@
 ---
 - name: Homebrew | Determine Homebrew ownership variables
-  set_fact:
+  ansible.builtin.set_fact:
     homebrew_user: '{{ homebrew_user | default(ansible_user_id) }}'
     homebrew_group: '{{ homebrew_group | default(ansible_user_gid) }}'
   when:
     - homebrew_user is undefined or homebrew_group is undefined
 
 - name: Homebrew | Update homebrew
-  command: "brew update --force"
+  ansible.builtin.command: "brew update --force"
   register: result
   changed_when:
     - '"You can upgrade them with brew upgrade" in result.stdout'
@@ -15,11 +15,14 @@
     - homebrew_taps is undefined or homebrew_installed_packages is undefined or homebrew_outdated_packages is undefined
 
 - name: Homebrew | Initialise cache
-  command: "brew --cache"
+  ansible.builtin.command: "brew --cache"
   changed_when: false
   when:
     - homebrew_taps is undefined or homebrew_installed_packages is undefined or homebrew_outdated_packages is undefined
 
-- import_tasks: taps.yml
-- import_tasks: installed-packages.yml
-- import_tasks: outdated-packages.yml
+- name: Update taps
+  ansible.builtin.import_tasks: taps.yml
+- name: Update installed packages
+  ansible.builtin.import_tasks: installed-packages.yml
+- name: Update outdated packages
+  ansible.builtin.import_tasks: outdated-packages.yml

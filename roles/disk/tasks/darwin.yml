@@ -1,15 +1,20 @@
 ---
-- name: "Disk | Check weather volume already exists"
-  command: "diskutil apfs list"
+- name: "Disk | Check wether volume already exists"
+  ansible.builtin.command: "diskutil apfs list"
   register: diskutil_list
+  changed_when:
+    - diskutil_list.rc != 0
 
 - name: "Disk | Get container"
-  set_fact:
+  ansible.builtin.set_fact:
     disk_container: "{{ diskutil_list.stdout | regex_search('Container\\sdisk[0-9]\\s', multiline=True) | regex_search('disk[0-9]') }}"
   when:
     - "'Projects' not in diskutil_list.stdout"
 
 - name: "Disk | Create Projects Volume"
-  command: "diskutil apfs addVolume {{ disk_container }} apfs Projects"
+  ansible.builtin.command: "diskutil apfs addVolume {{ disk_container }} apfs Projects"
+  register: diskutil_create
+  changed_when:
+    - diskutil_create.rc != 0
   when:
     - "'Projects' not in diskutil_list.stdout"

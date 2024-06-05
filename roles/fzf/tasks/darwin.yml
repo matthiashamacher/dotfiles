@@ -1,6 +1,6 @@
 ---
-- name: "fzf | Install fzf"
-  homebrew:
+- name: "Fzf | Install fzf"
+  community.general.homebrew:
     name: fzf
     state: latest
     sudo_password: "{{ ansible_become_password | default(omit) }}"
@@ -11,11 +11,11 @@
     - "'fzf' in homebrew_outdated_packages or 'fzf' not in homebrew_installed_packages"
 
 - name: Update installed packages
-  include_tasks: roles/homebrew/tasks/installed-packages.yml
+  ansible.builtin.include_tasks: roles/homebrew/tasks/installed-packages.yml
   when:
     - homebrew_install_result.changed
 
 - name: Update outdated packages
-  include_tasks: roles/homebrew/tasks/outdated-packages.yml
+  ansible.builtin.include_tasks: roles/homebrew/tasks/outdated-packages.yml
   when:
     - homebrew_install_result.changed

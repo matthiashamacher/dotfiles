@@ -1,7 +1,7 @@
 ---
 default_roles:
-  - 1password
   - amphetamine
+  - ansible
   - arc
   - bartender
   - bat
@@ -18,26 +18,27 @@ default_roles:
   - gnupg
   - homebrew
   - inkdrop
-  - jetbrains-toolbox
+  - jetbrains_toolbox
   - jq
   - just
-  - mac-app-store
+  - mac_app_store
   - make
   - neovim
   - node
+  - onepassword
   - orbstack
   - php
-  - pinentry-mac
-  - platformsh-cli
+  - pinentry_mac
+  - platformsh_cli
   - raycast
   - rectangle
   - slack
   - spotify
   - ssh
-  - symfony-cli
+  - symfony_cli
   - tower
   - transmit
-  - visual-studio-code
+  - visual_studio_code
   - warp
   - wireguard
   - yamllint

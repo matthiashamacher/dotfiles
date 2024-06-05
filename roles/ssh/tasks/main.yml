@@ -1,32 +1,34 @@
 ---
 - name: SSH | Ensure ~/.ssh directory exists
-  file:
+  ansible.builtin.file:
     path: "{{ ansible_user_dir }}/.ssh"
     state: directory
+    mode: "0700"
 
 - name: SSH | Copy SSH keys
-  copy:
+  ansible.builtin.copy:
     dest: "{{ ansible_user_dir }}/.ssh/{{ ssh_key_item.key }}"
     content: "{{ ssh_key_item.value }}"
-    mode: "0600"
+    mode: "{{ '.pub' in ssh_key_item.key | ternary('0600', '0644') }}"
   no_log: true
   loop_control:
     loop_var: ssh_key_item
   with_items: "{{ ssh_keys | default({}) | dict2items }}"
 
 - name: SSH | Copy config
-  copy:
+  ansible.builtin.copy:
     dest: "{{ ansible_user_dir }}/.ssh/config"
     src: config
     mode: "0600"
 
 - name: SSH | Ensure ~/.ssh/configs directory exists
-  file:
+  ansible.builtin.file:
     path: "{{ ansible_user_dir }}/.ssh/configs"
     state: directory
+    mode: "0600"
 
 - name: SSH | Copy custom configs
-  copy:
+  ansible.builtin.copy:
     dest: "{{ ansible_user_dir }}/.ssh/configs/{{ ssh_config_item.key }}"
     content: "{{ ssh_config_item.value }}"
     mode: "0600"

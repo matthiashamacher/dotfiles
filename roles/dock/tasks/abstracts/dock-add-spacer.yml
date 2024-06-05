@@ -2,6 +2,9 @@
 - name: Add Spacer
   ansible.builtin.command:
     cmd: "dockutil --add '' --type '{{ item.type }}' --after '{{ item.after }}'"
+  register: result
+  changed_when:
+    - result.rc != 0
 
 - name: Pause for 7 seconds between dock changes.
   ansible.builtin.pause:

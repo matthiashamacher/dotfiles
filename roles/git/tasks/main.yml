@@ -1,9 +1,11 @@
 ---
-- name: "Git | Configure ~/.gitignore"
+- name: Git | Configure ~/.gitignore
   ansible.builtin.copy:
     src: .gitignore
     dest: "{{ ansible_user_dir }}/.gitignore"
     mode: "0600"
 
-- include_tasks: git-config.yml
-- include_tasks: repos.yml
+- name: Git | Configure .gitconfig
+  ansible.builtin.include_tasks: git-config.yml
+- name: Git | Clone repos
+  ansible.builtin.include_tasks: repos.yml

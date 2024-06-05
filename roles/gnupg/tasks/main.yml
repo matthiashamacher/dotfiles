@@ -3,19 +3,19 @@
   ansible.builtin.import_tasks: darwin.yml
   when: ansible_os_family == 'Darwin'
 
-- name: "gnupg | Make sure ~/.gnupg exists"
+- name: "Gnupg | Make sure ~/.gnupg exists"
   ansible.builtin.file:
     path: "{{ ansible_user_dir }}/.gnupg"
     state: directory
     mode: "0700"
 
-- name: "gnupg | Configure ~/.gnupg/gpg.conf"
+- name: "Gnupg | Configure ~/.gnupg/gpg.conf"
   ansible.builtin.copy:
     src: gpg.conf
     dest: "{{ ansible_user_dir }}/.gnupg/gpg.conf"
     mode: "0600"
 
-- name: "gnupg | Configure ~/.gnupg/gpg-agent.conf"
+- name: "Gnupg | Configure ~/.gnupg/gpg-agent.conf"
   ansible.builtin.copy:
     src: gpg-agent.conf
     dest: "{{ ansible_user_dir }}/.gnupg/gpg-agent.conf"
@@ -23,11 +23,13 @@
   notify:
     - Restart gpg agent
 
-- name: "gnupg | Check for keys"
-  command: gpg --list-keys
+- name: "Gnupg | Check for keys"
+  ansible.builtin.command: gpg --list-keys
   register: keys
+  changed_when:
+    - keys.rc != 0
 
-- name: "gnupg | Copy gpg keys"
+- name: "Gnupg | Copy gpg keys"
   ansible.builtin.copy:
     dest: "/tmp/gpg-keys.gpg"
     content: "{{ gpg_keys }}"
@@ -36,20 +38,23 @@
   when:
     - "'m.hamacher@basecom.de' not in keys.stdout or 'm.hamacher@mhamacher.de' not in keys.stdout or 'mhamacher@mhamacher.dev' not in keys.stdout"
 
-- name: "gnupg | Import gpg keys"
+- name: "Gnupg | Import gpg keys"
   ansible.builtin.command:
     cmd: gpg --import /tmp/gpg-keys.gpg
+  register: result
+  changed_when:
+    - result.rc != 0
   when:
     - "'m.hamacher@basecom.de' not in keys.stdout or 'm.hamacher@mhamacher.de' not in keys.stdout or 'mhamacher@mhamacher.dev' not in keys.stdout"
 
-- name: "gnupg | Delete gpg keys file"
+- name: "Gnupg | Delete gpg keys file"
   ansible.builtin.file:
     path: "/tmp/gpg-keys.gpg"
     state: absent
   when:
     - "'m.hamacher@basecom.de' not in keys.stdout or 'm.hamacher@mhamacher.de' not in keys.stdout or 'mhamacher@mhamacher.dev' not in keys.stdout"
 
-- name: "gnupg | Copy ownertrust"
+- name: "Gnupg | Copy ownertrust"
   ansible.builtin.copy:
     dest: "/tmp/ownertrust-gpg.txt"
     content: "{{ gpg_ownertrust }}"
@@ -58,13 +63,16 @@
   when:
     - "'ultimate' not in keys.stdout"
 
-- name: "gnupg | Import ownertrust"
+- name: "Gnupg | Import ownertrust"
   ansible.builtin.command:
     cmd: gpg --import-ownertrust /tmp/ownertrust-gpg.txt
+  register: result
+  changed_when:
+    - result.rc != 0
   when:
     - "'ultimate' not in keys.stdout"
 
-- name: "gnupg | Delete ownertrust file"
+- name: "Gnupg | Delete ownertrust file"
   ansible.builtin.file:
     path: "/tmp/ownertrust-gpg.txt"
     state: absent

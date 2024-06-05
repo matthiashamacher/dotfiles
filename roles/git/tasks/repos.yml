@@ -1,6 +1,6 @@
 ---
 - name: Git | Check which repos are already cloned
-  stat:
+  ansible.builtin.stat:
     path: "{{ git_repo.path }}"
   register: existing_repositories
   loop_control:
@@ -10,9 +10,14 @@
   ignore_errors: true
 
 - name: Git | Clone missing repos
-  command: "git clone {{ item.git_repo.url }} {{ item.git_repo.path }}"
+  ansible.builtin.git:
+    dest: "{{ item.git_repo.path }}"
+    repo: "{{ item.git_repo.url }}"
+  register: result
   loop_control:
     label: "{{ item.git_repo.name }}"
   with_items: "{{ existing_repositories.results }}"
+  changed_when:
+    - result.rc != 0
   when:
-    - item.stat.exists == False
+    - not item.stat.exists

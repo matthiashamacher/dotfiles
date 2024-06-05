@@ -1,6 +1,6 @@
 ---
 - name: "Dock | Install dockutil"
-  homebrew:
+  community.general.homebrew:
     name: dockutil
     state: latest
     sudo_password: "{{ ansible_become_password | default(omit) }}"
@@ -12,12 +12,12 @@
     - ansible_os_family == 'Darwin'
 
 - name: Update installed packages
-  include_tasks: roles/homebrew/tasks/installed-packages.yml
+  ansible.builtin.include_tasks: roles/homebrew/tasks/installed-packages.yml
   when:
     - homebrew_install_result.changed
 
 - name: Update outdated packages
-  include_tasks: roles/homebrew/tasks/outdated-packages.yml
+  ansible.builtin.include_tasks: roles/homebrew/tasks/outdated-packages.yml
   when:
     - homebrew_install_result.changed
 

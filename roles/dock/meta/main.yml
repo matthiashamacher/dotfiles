@@ -1,10 +1,10 @@
 ---
 dependencies:
   - role: homebrew
-  - role: 1password
+  - role: onepassword
   - role: inkdrop
   - role: arc
   - role: slack
   - role: warp
   - role: tower
-  - role: visual-studio-code
+  - role: visual_studio_code

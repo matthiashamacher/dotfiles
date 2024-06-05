@@ -1,12 +1,14 @@
 ---
 - name: "WireGuard | Install WireGuard"
-  command: "mas install 1451685025"
+  ansible.builtin.command: "mas install 1451685025"
   register: mas_install_result
+  changed_when:
+    - mas_install_result.rc != 0
   when:
     - "'1451685025' not in mas_installed_apps"
 
 - name: Update installed apps
-  include_tasks: roles/mac-app-store/tasks/installed-apps.yml
+  ansible.builtin.include_tasks: roles/mac_app_store/tasks/installed-apps.yml
   when:
     - mas_install_result.changed
 
@@ -19,7 +21,7 @@
     - mas_install_result.changed
 
 - name: "WireGuard | Copying configs"
-  copy:
+  ansible.builtin.copy:
     dest: "{{ ansible_user_dir }}/Documents/WireGuard/{{ wireguard_config_item.key }}"
     content: "{{ wireguard_config_item.value }}"
     mode: "0755"

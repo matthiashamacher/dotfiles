@@ -1,18 +1,21 @@
 ---
 - name: "Finder | Create Private Projects Folders"
-  file:
+  ansible.builtin.file:
     path: "{{ projects_volume_prefix }}/{{ projects_private_folders_prefix }}/{{ item }}"
     state: directory
+    mode: "0755"
   loop: "{{ projects_private_folders }}"
 
 - name: "Finder | Create Github Projects Folders"
-  file:
+  ansible.builtin.file:
     path: "{{ projects_volume_prefix }}/{{ projects_github_folders_prefi }}/{{ item }}"
     state: directory
+    mode: "0755"
   loop: "{{ projects_github_folders }}"
 
 - name: "Finder | Create Work Projects Folders"
-  file:
+  ansible.builtin.file:
     path: "{{ projects_volume_prefix }}/{{ projects_work_folders_prefix }}/{{ item }}"
     state: directory
+    mode: "0755"
   loop: "{{ projects_work_folders }}"

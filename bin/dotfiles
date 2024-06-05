@@ -167,14 +167,8 @@ function darwin_setup() {
 }
 
 update_ansible_galaxy() {
-  local os=$1
-  local os_requirements=""
   _task "Updating Ansible Galaxy"
-  if [ -f "$DOTFILES_DIR/requirements/$os.yml" ]; then
-    _task "${OVERWRITE}Updating Ansible Galaxy with OS Config: $os"
-    os_requirements="$DOTFILES_DIR/requirements/$os.yml"
-  fi
-  _cmd "ansible-galaxy install -r $DOTFILES_DIR/requirements/common.yml $os_requirements"
+  _cmd "ansible-galaxy install -r $DOTFILES_DIR/requirements.yml"
 }
 
 _task "Loading Setup for detected OS: $(uname -s)"

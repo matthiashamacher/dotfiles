@@ -1,13 +1,13 @@
 ---
 - name: "Homebrew | Check for outdated packages"
-  command: "brew outdated"
+  ansible.builtin.command: "brew outdated"
   register: outdated_result
   changed_when:
     - homebrew_outdated_packages is undefined or outdated_result.stdout != homebrew_outdated_packages
   check_mode: false
 
 - name: Homebrew | Determine outdated packages
-  set_fact:
+  ansible.builtin.set_fact:
     homebrew_outdated_packages: "{{ outdated_result.stdout }}"
   when:
     - outdated_result.changed

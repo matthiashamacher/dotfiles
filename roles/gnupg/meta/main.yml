@@ -1,5 +1,5 @@
 ---
 dependencies:
   - role: homebrew
-  - role: 1password
-  - role: pinentry-mac
+  - role: onepassword
+  - role: pinentry_mac
