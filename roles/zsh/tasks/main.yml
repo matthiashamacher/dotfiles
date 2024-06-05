@@ -28,3 +28,9 @@
     src: .exports
     dest: "{{ ansible_user_dir }}/.exports"
     mode: "0644"
+
+- name: zsh | Copy .osx
+  copy:
+    src: .osx
+    dest: "{{ ansible_user_dir }}/.osx"
+    mode: "0644"
