@@ -25,7 +25,7 @@
   ansible.builtin.file:
     path: "{{ ansible_user_dir }}/.ssh/configs"
     state: directory
-    mode: "0600"
+    mode: "0700"
 
 - name: SSH | Copy custom configs
   ansible.builtin.copy:
