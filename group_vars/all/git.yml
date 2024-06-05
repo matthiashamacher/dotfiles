@@ -16,4 +16,7 @@ git_signingkey: !vault |
           3963386339623437323134653737636165386633373837386166
 
 git_repos:
+  - name: Tafel Meppen
+    url: git@github.com:matthiashamacher/tafel-meppen.git
+    path: /Volumes/Projects/Private/Tafel\ Meppen
 private_git_repos: "{{ vault_git_repos }}"

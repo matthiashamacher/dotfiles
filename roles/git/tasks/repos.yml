@@ -6,7 +6,7 @@
   loop_control:
     loop_var: git_repo
     label: "{{ git_repo.name }}"
-  loop: "{{ git_repos }}"
+  loop: "{{ git_repos + private_git_repos }}"
   ignore_errors: true
 
 - name: Git | Clone missing repos
