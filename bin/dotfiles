@@ -153,7 +153,8 @@ function darwin_setup() {
         _cmd "brew install ansible"
         _task "Configuring ansible"
         _cmd "mkdir -p ~/.ansible"
-        _cmd "echo 'localhost' > ~/.ansible/hosts"
+        _cmd "echo '[all]
+127.0.0.1  ansible_connection=local' > ~/.ansible/hosts"
         _cmd "mkdir -p ~/.ansible-vault"
         _cmd "touch $VAULT_SECRET"
         _task "Waiting for vault secret. Press enter to continue"
