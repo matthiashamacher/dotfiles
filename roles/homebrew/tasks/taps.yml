@@ -2,7 +2,7 @@
 - name: Homebrew | Check for taps
   command: "brew tap"
   register: tap_result
-  changed_when: 
+  changed_when:
     - homebrew_taps is undefined or tap_result.stdout != homebrew_taps
   check_mode: false
 

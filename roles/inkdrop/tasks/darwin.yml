@@ -19,4 +19,3 @@
   include_tasks: roles/homebrew/tasks/outdated-packages.yml
   when:
     - homebrew_install_result.changed
-  

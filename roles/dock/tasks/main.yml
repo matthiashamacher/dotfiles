@@ -28,5 +28,5 @@
 
 - name: "Dock | Add items"
   ansible.builtin.include_tasks: add-items.yml
-  when: 
+  when:
     - ansible_os_family == 'Darwin'

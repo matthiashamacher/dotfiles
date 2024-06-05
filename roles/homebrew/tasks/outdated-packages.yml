@@ -2,7 +2,7 @@
 - name: "Homebrew | Check for outdated packages"
   command: "brew outdated"
   register: outdated_result
-  changed_when: 
+  changed_when:
     - homebrew_outdated_packages is undefined or outdated_result.stdout != homebrew_outdated_packages
   check_mode: false
 

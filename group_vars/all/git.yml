@@ -1,3 +1,4 @@
+---
 git_user_name: "Matthias Hamacher"
 git_user_email: !vault |
           $ANSIBLE_VAULT;1.1;AES256

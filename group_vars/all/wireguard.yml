@@ -1,3 +1,4 @@
+---
 wireguard_config:
   bsc.conf: !vault |
           $ANSIBLE_VAULT;1.1;AES256

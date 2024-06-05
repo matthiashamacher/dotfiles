@@ -1,14 +1,14 @@
 ---
-- name: "fzf | Install fzf"
+- name: "yamllint | Install yamllint"
   homebrew:
-    name: fzf
+    name: yamllint
     state: latest
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
   register: homebrew_install_result
   when:
-    - "'fzf' in homebrew_outdated_packages or 'fzf' not in homebrew_installed_packages"
+    - "'yamllint' in homebrew_outdated_packages or 'yamllint' not in homebrew_installed_packages"
 
 - name: Update installed packages
   include_tasks: roles/homebrew/tasks/installed-packages.yml
