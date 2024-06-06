@@ -5,15 +5,25 @@
     state: directory
     mode: "0700"
 
-- name: SSH | Copy SSH keys
+- name: SSH | Copy SSH private keys
   ansible.builtin.copy:
-    dest: "{{ ansible_user_dir }}/.ssh/{{ ssh_key_item.key }}"
-    content: "{{ ssh_key_item.value }}"
-    mode: "{{ '.pub' in ssh_key_item.key | ternary('0600', '0644') }}"
-  no_log: true
+    dest: "{{ ansible_user_dir }}/.ssh/{{ private_key.key }}"
+    content: "{{ private_key.value }}"
+    mode: "0600"
   loop_control:
-    loop_var: ssh_key_item
-  with_items: "{{ ssh_keys | default({}) | dict2items }}"
+    loop_var: private_key
+    label: "{{ private_key.key }}"
+  with_items: "{{ ssh_private_keys | default({}) | dict2items }}"
+
+- name: SSH | Copy SSH public keys
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.ssh/{{ public_key.key }}"
+    content: "{{ public_key.value }}"
+    mode: "0644"
+  loop_control:
+    loop_var: public_key
+    label: "{{ public_key.key }}"
+  with_items: "{{ ssh_public_keys | default({}) | dict2items }}"
 
 - name: SSH | Copy config
   ansible.builtin.copy:
@@ -32,7 +42,7 @@
     dest: "{{ ansible_user_dir }}/.ssh/configs/{{ ssh_config_item.key }}"
     content: "{{ ssh_config_item.value }}"
     mode: "0600"
-  no_log: true
   loop_control:
     loop_var: ssh_config_item
+    label: "{{ ssh_config_item.key }}"
   with_items: "{{ ssh_configs | default({}) | dict2items }}"

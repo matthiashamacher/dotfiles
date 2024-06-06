@@ -13,6 +13,7 @@
   ansible.builtin.git:
     dest: "{{ item.git_repo.path }}"
     repo: "{{ item.git_repo.url }}"
+    accept_hostkey: true
   register: result
   loop_control:
     label: "{{ item.git_repo.name }}"
