@@ -3,7 +3,7 @@
   ansible.builtin.command: "mas install 1451685025"
   register: mas_install_result
   changed_when:
-    - mas_install_result.rc != 0
+    - "'Installed' in mas_install_result.stdout"
   when:
     - "'1451685025' not in mas_installed_apps"
 
