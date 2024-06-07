@@ -19,5 +19,14 @@ git_signingkey: !vault |
 git_repos:
   - name: Tafel Meppen
     url: git@github.com:matthiashamacher/tafel-meppen.git
-    path: /Volumes/Projects/Private/Tafel\ Meppen
+    path: "/Volumes/Projects/Private/Tafel\ Meppen"
+  - name: Elternsprechtag Digital App
+    url: git@github.com:elternsprechtag-digital/app.git
+    path: "/Volumes/Projects/Elternsprechtag\ Digital/App"
+  - name: Elternsprechtag Digital Admin
+    url: git@github.com:elternsprechtag-digital/admin.git
+    path: "/Volumes/Projects/Elternsprechtag\ Digital/Admin"
+  - name: Elternsprechtag Digital Landingpage
+    url: git@github.com:elternsprechtag-digital/landingpage.git
+    path: "/Volumes/Projects/Elternsprechtag\ Digital/Landingpage"
 private_git_repos: "{{ vault_git_repos }}"

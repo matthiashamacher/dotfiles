@@ -4,18 +4,25 @@
     path: "{{ projects_volume_prefix }}/{{ projects_private_folders_prefix }}/{{ item }}"
     state: directory
     mode: "0755"
-  loop: "{{ projects_private_folders }}"
+  loop: "{{ projects_private_folders + basic_folders }}"
 
-- name: "Finder | Create Github Projects Folders"
+- name: "Finder | Create Open Source Projects Folders"
   ansible.builtin.file:
-    path: "{{ projects_volume_prefix }}/{{ projects_github_folders_prefi }}/{{ item }}"
+    path: "{{ projects_volume_prefix }}/{{ projects_open_source_folders_prefix }}/{{ item }}"
     state: directory
     mode: "0755"
-  loop: "{{ projects_github_folders }}"
+  loop: "{{ projects_open_source_folders + basic_folders }}"
 
-- name: "Finder | Create Work Projects Folders"
+- name: "Finder | Create basecom Projects Folders"
   ansible.builtin.file:
-    path: "{{ projects_volume_prefix }}/{{ projects_work_folders_prefix }}/{{ item }}"
+    path: "{{ projects_volume_prefix }}/{{ projects_basecom_folders_prefix }}/{{ item }}"
     state: directory
     mode: "0755"
-  loop: "{{ projects_work_folders }}"
+  loop: "{{ projects_basecom_folders + basic_folders }}"
+
+- name: "Finder | Create Elternsprechtag Digital Projects Folders"
+  ansible.builtin.file:
+    path: "{{ projects_volume_prefix }}/{{ projects_elternsprechtag_digital_folders_prefix }}/{{ item }}"
+    state: directory
+    mode: "0755"
+  loop: "{{ projects_elternsprechtag_digital_folders + basic_folders }}"

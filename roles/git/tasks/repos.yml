@@ -11,7 +11,7 @@
 
 - name: Git | Clone missing repos
   ansible.builtin.command:
-    cmd: "git clone {{ item.git_repo.url }} {{ item.git_repo.path }}"
+    cmd: "git clone {{ item.git_repo.url }} '{{ item.git_repo.path }}'"
   register: result
   loop_control:
     label: "{{ item.git_repo.name }}"

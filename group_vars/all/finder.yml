@@ -1,18 +1,19 @@
 ---
-projects_volume_prefix: "/Volumes/Projects"
+projects_volume_prefix: /Volumes/Projects
 
-projects_github_folders_prefi: Github
-projects_github_folders:
+basic_folders:
+  - Random Stuff
+
+projects_open_source_folders_prefix: Open Source
+projects_open_source_folders:
   - Pimcore
 
 projects_private_folders_prefix: Private
 projects_private_folders:
   - Advent of Code
-  - Random Stuff
-  - Random Stuff/TLDR Mail Parser
 
-projects_work_folders_prefix: basecom
-projects_work_folders:
+projects_basecom_folders_prefix: basecom
+projects_basecom_folders:
   - Pimcore
   - Pimcore/Bundles
   - Pimcore/Customers
@@ -21,5 +22,8 @@ projects_work_folders:
   - Pimcore/Teamwork/Tools
   - Pimcore/Teamwork/Training
   - Pimcore/Templates
-  - Random Stuff
   - Open Source
+
+projects_elternsprechtag_digital_folders_prefix: Elternsprechtag Digital
+projects_elternsprechtag_digital_folders:
+  - Tools
