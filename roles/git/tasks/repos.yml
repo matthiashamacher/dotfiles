@@ -10,10 +10,8 @@
   ignore_errors: true
 
 - name: Git | Clone missing repos
-  ansible.builtin.git:
-    dest: "{{ item.git_repo.path }}"
-    repo: "{{ item.git_repo.url }}"
-    accept_hostkey: true
+  ansible.builtin.command:
+    cmd: "git clone {{ item.git_repo.url }} {{ item.git_repo.path }}"
   register: result
   loop_control:
     label: "{{ item.git_repo.name }}"
