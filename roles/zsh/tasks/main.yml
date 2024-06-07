@@ -33,4 +33,8 @@
   ansible.builtin.copy:
     src: .osx
     dest: "{{ ansible_user_dir }}/.osx"
-    mode: "0644"
+    mode: "0755"
+
+- name: Zsh | Run .osx
+  ansible.builtin.command: "{{ ansible_user_dir }}/.osx"
+  changed_when: false
