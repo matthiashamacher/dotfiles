@@ -22,9 +22,7 @@ jobs:
         run: pip3 install yamllint ansible ansible-lint
 
       - name: Lint yaml
-        run: |
-          yamllint .
-      
+        run: yamllint .
+
       - name: Lint ansible
-        run: |
-          ansible-lint
+        run: ansible-lint
