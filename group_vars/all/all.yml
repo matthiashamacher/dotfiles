@@ -45,5 +45,6 @@ default_roles:
   - warp
   - wireguard
   - yamllint
+  - zoom
   - zoxide
   - zsh
