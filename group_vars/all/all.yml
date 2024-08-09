@@ -30,6 +30,7 @@ default_roles:
   - php
   - pinentry_mac
   - platformsh_cli
+  - prettier
   - raycast
   - rectangle
   - slack
