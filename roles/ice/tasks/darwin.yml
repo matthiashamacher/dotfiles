@@ -1,14 +1,14 @@
 ---
-- name: "Bartender | Install Bartender"
+- name: "Ice | Install Ice"
   community.general.homebrew:
-    name: bartender
+    name: jordanbaird-ice
     state: latest
     sudo_password: "{{ ansible_become_password | default(omit) }}"
   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
   become_user: "{{ homebrew_user }}"
   register: homebrew_install_result
   when:
-    - "'bartender' in homebrew_outdated_packages or 'bartender' not in homebrew_installed_packages"
+    - "'jordanbaird-ice' in homebrew_outdated_packages or 'jordanbaird-ice' not in homebrew_installed_packages"
 
 - name: Update installed packages
   ansible.builtin.include_tasks: roles/homebrew/tasks/installed-packages.yml
