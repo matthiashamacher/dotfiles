@@ -20,8 +20,10 @@
     src: gpg-agent.conf
     dest: "{{ ansible_user_dir }}/.gnupg/gpg-agent.conf"
     mode: "0600"
-  notify:
-    - Restart gpg agent
+
+- name: Restart gpg agent
+  ansible.builtin.command:
+    cmd: gpgconf --reload gpg-agent
 
 - name: "Gnupg | Check for keys"
   ansible.builtin.command: gpg --list-keys

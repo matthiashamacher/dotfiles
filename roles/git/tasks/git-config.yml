@@ -28,7 +28,7 @@
   community.general.git_config:
     name: gpg.program
     scope: global
-    value: /usr/local/bin/gpg
+    value: /opt/homebrew/bin/gpg
 
 - name: "Git | .gitconfig | Set gpg.format"
   community.general.git_config:

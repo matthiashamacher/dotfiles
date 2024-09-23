@@ -148,6 +148,9 @@ function darwin_setup() {
     if ! [ -x "$(command -v brew)" ]; then
         _task "Installing Homebrew"
         _cmd '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+        _cmd "echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> /Users/matthiashamacher/.zprofile"
+        _cmd 'eval $(/opt/homebrew/bin/brew shellenv)'
+        _cmd 'brew doctor'
     fi
     if ! [ -x "$(command -v ansible)" ]; then
         _task "Installing Ansible"
