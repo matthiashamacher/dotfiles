@@ -1,5 +1,4 @@
 ---
 - name: "Pimcore Cloud CLI | Install pimcore-cloud CLI"
-  ansible.builtin.shell: "curl -sfS https://cli.pimcore.cloud/installer | php"
-  changed_when:
-    - result.rc != 0
+  ansible.builtin.shell: "set -o pipefail && curl -sfS https://cli.pimcore.cloud/installer | php"
+  changed_when: false

@@ -24,6 +24,7 @@
 - name: Restart gpg agent
   ansible.builtin.command:
     cmd: gpgconf --reload gpg-agent
+  changed_when: false
 
 - name: "Gnupg | Check for keys"
   ansible.builtin.command: gpg --list-keys
