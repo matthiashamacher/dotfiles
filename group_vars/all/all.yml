@@ -24,6 +24,7 @@ default_roles:
   - jetbrains_toolbox
   - jq
   - just
+  - lla
   - mac_app_store
   - make
   - neovim

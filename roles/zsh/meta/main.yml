@@ -8,4 +8,6 @@ dependencies:
   - role: homebrew
   - role: gnupg
   - role: fzf
+  - role: lla
+  - role: pulumi
   - role: zoxide

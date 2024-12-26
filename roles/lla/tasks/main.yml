@@ -1,0 +1,11 @@
+---
+- name: Run Darwin Tasks
+  ansible.builtin.import_tasks: darwin.yml
+  when: ansible_os_family == 'Darwin'
+
+- name: Initialize lla
+  ansible.builtin.command:
+    cmd: "lla init"
+  register: lla_init_result
+  changed_when:
+    - "'Created default theme' in lla_init_result.stdout"
