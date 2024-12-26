@@ -35,6 +35,16 @@
     dest: "{{ ansible_user_dir }}/.osx"
     mode: "0755"
 
+- name: ZSH | Copy private dot files
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/{{ private_dot_file_item.key }}"
+    content: "{{ private_dot_file_item.value }}"
+    mode: "0600"
+  loop_control:
+    loop_var: private_dot_file_item
+    label: "{{ private_dot_file_item.key }}"
+  with_items: "{{ private_dot_files | default({}) | dict2items }}"
+
 - name: Zsh | Run .osx
   ansible.builtin.command:
     cmd: "{{ ansible_user_dir }}/.osx"

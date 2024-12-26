@@ -31,10 +31,10 @@ default_roles:
   - onepassword
   - orbstack
   - php
-  - pimcore_cloud_cli
   - pinentry_mac
   - platformsh_cli
   - prettier
+  - pulumi
   - raycast
   - rectangle
   - slack
