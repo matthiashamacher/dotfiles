@@ -1,4 +1,0 @@
----
-dependencies:
-  - role: platformsh_cli
-  - role: php
