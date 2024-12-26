@@ -20,7 +20,7 @@ alias psh="platform"
 alias dbii="docker buildx imagetools inspect"
 alias dep="/Users/matthiashamacher/.composer/vendor/bin/dep"
 alias pimcore="PLATFORMSH_CLI_SESSION_ID=pimcore_paas PLATFORMSH_CLI_API_URL=https://api.pimcore.cloud PLATFORMSH_CLI_AUTH_URL=https://auth.pimcore.cloud/ PLATFORMSH_CLI_API_VENDOR_FILTER=pimcore platform"
-
+alias j="just"
 
 # ls
 # Replace ls with lla
