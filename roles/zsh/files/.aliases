@@ -87,4 +87,6 @@ alias vimedit="cd ~/.config/nvim && nvim ."
 alias sshcopy='pbcopy < ~/.ssh/id_ed25519.pub'
 
 # Edit SSH Config
-alias sshedit='nvim ~/.ssh/config'
+alias ssheditm='nvim ~/.ssh/config'
+alias ssheditw='nvim ~/.ssh/configs/work.config'
+alias ssheditp='nvim ~/.ssh/configs/private.config'
