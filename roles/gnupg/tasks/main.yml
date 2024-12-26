@@ -27,7 +27,8 @@
   changed_when: false
 
 - name: "Gnupg | Check for keys"
-  ansible.builtin.command: gpg --list-keys
+  ansible.builtin.command:
+    cmd: gpg --list-keys
   register: keys
   changed_when:
     - keys.rc != 0

@@ -1,6 +1,7 @@
 ---
 - name: "Disk | Check wether volume already exists"
-  ansible.builtin.command: "diskutil apfs list"
+  ansible.builtin.command:
+    cmd: "diskutil apfs list"
   register: diskutil_list
   changed_when:
     - diskutil_list.rc != 0
@@ -12,7 +13,8 @@
     - "'Projects' not in diskutil_list.stdout"
 
 - name: "Disk | Create Projects Volume"
-  ansible.builtin.command: "diskutil apfs addVolume {{ disk_container }} apfs Projects"
+  ansible.builtin.command:
+    cmd: "diskutil apfs addVolume {{ disk_container }} apfs Projects"
   register: diskutil_create
   changed_when:
     - diskutil_create.rc != 0

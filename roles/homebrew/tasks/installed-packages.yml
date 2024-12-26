@@ -1,6 +1,7 @@
 ---
 - name: Homebrew | Check installed packages
-  ansible.builtin.command: "brew list"
+  ansible.builtin.command:
+    cmd: "brew list"
   register: installed_result
   changed_when:
     - homebrew_installed_packages is undefined or installed_result.stdout != homebrew_installed_packages

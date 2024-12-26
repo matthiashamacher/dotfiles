@@ -1,6 +1,7 @@
 ---
 - name: "Homebrew | Check for outdated packages"
-  ansible.builtin.command: "brew outdated"
+  ansible.builtin.command:
+    cmd: "brew outdated"
   register: outdated_result
   changed_when:
     - homebrew_outdated_packages is undefined or outdated_result.stdout != homebrew_outdated_packages

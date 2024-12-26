@@ -36,5 +36,6 @@
     mode: "0755"
 
 - name: Zsh | Run .osx
-  ansible.builtin.command: "{{ ansible_user_dir }}/.osx"
+  ansible.builtin.command:
+    cmd: "{{ ansible_user_dir }}/.osx"
   changed_when: false

@@ -1,6 +1,7 @@
 ---
 - name: "Amphetamine | Install Amphetamine"
-  ansible.builtin.command: "mas install 937984704"
+  ansible.builtin.command:
+    cmd: "mas install 937984704"
   register: mas_install_result
   changed_when:
     - "'Installed' in mas_install_result.stdout"

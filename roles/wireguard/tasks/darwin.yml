@@ -1,6 +1,7 @@
 ---
 - name: "WireGuard | Install WireGuard"
-  ansible.builtin.command: "mas install 1451685025"
+  ansible.builtin.command:
+    cmd: "mas install 1451685025"
   register: mas_install_result
   changed_when:
     - "'Installed' in mas_install_result.stdout"

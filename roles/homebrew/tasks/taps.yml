@@ -1,6 +1,7 @@
 ---
 - name: Homebrew | Check for taps
-  ansible.builtin.command: "brew tap"
+  ansible.builtin.command:
+    cmd: "brew tap"
   register: tap_result
   changed_when:
     - homebrew_taps is undefined or tap_result.stdout != homebrew_taps
