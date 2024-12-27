@@ -6,6 +6,7 @@ default_roles:
   - arc
   - bat
   - bitwarden
+  - bruno
   - cleanmymac
   - cleanshot
   - composer

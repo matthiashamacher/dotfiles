@@ -1,0 +1,21 @@
+---
+- name: "Bruno | Install bruno"
+  community.general.homebrew:
+    name: bruno
+    state: latest
+    sudo_password: "{{ ansible_become_password | default(omit) }}"
+  become: "{{ (homebrew_user != ansible_user_id) | bool }}"
+  become_user: "{{ homebrew_user }}"
+  register: homebrew_install_result
+  when:
+    - "'bruno' in homebrew_outdated_packages or 'bruno' not in homebrew_installed_packages"
+
+- name: Update installed packages
+  ansible.builtin.include_tasks: roles/homebrew/tasks/installed-packages.yml
+  when:
+    - homebrew_install_result.changed
+
+- name: Update outdated packages
+  ansible.builtin.include_tasks: roles/homebrew/tasks/outdated-packages.yml
+  when:
+    - homebrew_install_result.changed
