@@ -1,0 +1,14 @@
+---
+- name: Docker login | ghcr.io
+  ansible.builtin.command:
+    cmd: "docker login ghcr.io -u matthiashamacher -p {{ github_docker_login_token }}"
+  register: output
+  changed_when:
+    - "'Login succeeded' in output.stdout"
+
+- name: Docker login | hub.docker.com
+  ansible.builtin.command:
+    cmd: "docker login -u matthiashamacher -p {{ docker_hub_login_token }}"
+  register: output
+  changed_when:
+    - "'Login succeeded' in output.stdout"

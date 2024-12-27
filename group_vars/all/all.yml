@@ -12,10 +12,11 @@ default_roles:
   - disk
   - displaylink
   - dock
+  - docker
   - finder
   - fzf
   - git
-  - gh
+  - github
   - gnupg
   - hadolint
   - homebrew
