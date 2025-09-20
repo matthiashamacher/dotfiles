@@ -2,6 +2,7 @@
 
 # Run dotfiles
 alias dotfiles="~/.dotfiles/bin/dotfiles"
+alias cz='chezmoi'
 
 # Navigation
 alias ..="cd .."
@@ -22,11 +23,6 @@ alias dep="/Users/matthiashamacher/.composer/vendor/bin/dep"
 alias pimcore="PLATFORMSH_CLI_SESSION_ID=pimcore_paas PLATFORMSH_CLI_API_URL=https://api.pimcore.cloud PLATFORMSH_CLI_AUTH_URL=https://auth.pimcore.cloud/ PLATFORMSH_CLI_API_VENDOR_FILTER=pimcore platform"
 alias shopware="PLATFORMSH_CLI_SESSION_ID=shopware_paas PLATFORMSH_CLI_API_URL=https://proxy.shopware.com PLATFORMSH_CLI_AUTH_URL=https://psh-auth.shopware.com/ PLATFORMSH_CLI_API_VENDOR_FILTER=shopware platform"
 alias j="just"
-
-# ls
-# Replace ls with lla
-alias ls="lla"
-
 
 # grep
 # Always enable colored `grep` output
