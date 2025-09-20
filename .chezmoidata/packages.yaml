@@ -1,0 +1,53 @@
+taps:
+  darwin:
+    - platformsh/tap
+    - symfony-cli/tap
+    
+packages:
+  darwin:
+    - bat
+    - composer
+    - dockutil
+    - fzf
+    - gh
+    - github-keygen
+    - gnupg
+    - jq
+    - just
+    - mas
+    - neovim
+    - node
+    - php
+    - pinentry-mac
+    - platformsh/tap/platformsh-cli
+    - pulumi
+    - symfony-cli/tap/symfony-cli
+    - tailscale
+    - zoxide
+
+casks:
+  darwin:
+    - bitwarden
+    - bruno
+    - cleanshot
+    - displaylink
+    - google-chrome
+    - jetbrains-toolbox
+    - jordanbaird-ice
+    - orbstack
+    - raycast
+    - rectangle
+    - tableplus
+    - slack
+    - spotify
+    - tower
+    - transmit
+    - visual-studio-code
+    - warp
+
+apps:
+  darwin:
+    - name: "WireGuard"
+      id: 1451685025
+    - name: "Amphetamine"
+      id: 937984704
