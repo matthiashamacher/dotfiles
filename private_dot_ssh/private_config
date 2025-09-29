@@ -1,0 +1,23 @@
+Include ~/.orbstack/ssh/config
+
+Host homeassistant.local
+	HostName homeassistant.local
+	User root
+
+Host *
+	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+
+# Include custom configs
+Include ~/.ssh/configs/*.config
+
+# BEGIN: Platform.sh certificate configuration
+Host *.platform.sh
+  Include /Users/matthiashamacher/.platformsh/ssh/*.config
+Host *
+# END: Platform.sh certificate configuration
+
+# BEGIN: Pimcore Cloud certificate configuration
+Host *.platform.sh
+  Include /Users/matthiashamacher/.pimcore-cli/ssh/*.config
+Host *
+# END: Pimcore Cloud certificate configuration
