@@ -1,6 +1,13 @@
+encryption = "age"
+
 [git]
     autoCommit = true
     autoPush = true
 
 [hooks.read-source-state.pre]
     command = ".local/share/chezmoi/.initial-setup.sh"
+
+[age]
+    command = "rage"
+    identity = "~/.config/chezmoi/key.txt"
+    recipient = "age1lw0as8ndy5emqhn87el2fr7kdwntmz8ylds73h8nqsjm3ygagc7s4jjr80"
