@@ -5,6 +5,7 @@ taps:
     
 packages:
   darwin:
+    - age
     - bat
     - composer
     - dockutil
@@ -21,6 +22,7 @@ packages:
     - pinentry-mac
     - platformsh/tap/platformsh-cli
     - pulumi
+    - rage
     - symfony-cli/tap/symfony-cli
     - tailscale
     - zoxide
@@ -51,3 +53,32 @@ apps:
       id: 1451685025
     - name: "Amphetamine"
       id: 937984704
+
+vscode:
+  darwin:
+    - aaron-bond.better-comments
+    - burkeholland.simple-react-snippets
+    - cdfzo.mizu
+    - christian-kohler.path-intellisense
+    - dbaeumer.vscode-eslint
+    - donjayamanne.githistory
+    - dsznajder.es7-react-js-snippets
+    - ecmel.vscode-html-css
+    - esbenp.prettier-vscode
+    - formulahendry.auto-close-tag
+    - formulahendry.auto-rename-tag
+    - github.copilot
+    - github.copilot-chat
+    - github.vscode-github-actions
+    - humao.rest-client
+    - johnpapa.vscode-peacock
+    - kisstkondoros.vscode-gutter-preview
+    - mrmlnc.vscode-scss
+    - ms-azuretools.vscode-containers
+    - ms-vscode-remote.remote-containers
+    - nucllear.vscode-extension-auto-import
+    - rocketseat.theme-omni
+    - sibiraj-s.vscode-scss-formatter
+    - steoates.autoimport
+    - zignd.html-css-class-completion
+    - zobo.php-intellisense
