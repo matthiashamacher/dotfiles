@@ -15,9 +15,3 @@ Host *.platform.sh
   Include /Users/matthiashamacher/.platformsh/ssh/*.config
 Host *
 # END: Platform.sh certificate configuration
-
-# BEGIN: Pimcore Cloud certificate configuration
-Host *.platform.sh
-  Include /Users/matthiashamacher/.pimcore-cli/ssh/*.config
-Host *
-# END: Pimcore Cloud certificate configuration
