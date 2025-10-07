@@ -1,5 +1,5 @@
 #!/bin/sh
 
 {{ range .docker.registries }}
-{{ onepasswordRead .password}} | docker login {{ .name }} --username {{ .username }} --password-stdin
+op read {{ .password | quote }} | docker login {{ .name }} --username {{ .username }} --password-stdin
 {{ end -}}

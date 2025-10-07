@@ -3,6 +3,6 @@ docker:
     - name: ghcr.io
       username: matthiashamacher
       password: op://Personal/Github/Access Tokens/Registry
-    - name: hub.docker.com
+    - name: index.docker.io
       username: matthiashamacher
       password: op://Personal/Docker/Access Tokens/Registry
