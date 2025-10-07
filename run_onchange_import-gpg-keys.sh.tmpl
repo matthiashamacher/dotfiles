@@ -1,0 +1,11 @@
+#!/bin/sh
+
+echo {{ onepasswordDocument "vu4e6zkexu5e6qymj3qrze4idy" | quote }} > gpg-secret-keys.asc
+echo {{ onepasswordDocument "p4k62id7ugf3qwwgp5mns3cmaq" | quote }} > gpg-public-keys.asc
+echo "{{- onepasswordDocument "um7h7ltuyn3wxnqiod6z4huq7y" -}}\c" > gpg-ownertrust.txt
+
+gpg --import gpg*.asc
+gpg --import-ownertrust gpg-ownertrust.txt
+
+rm -rf gpg*.asc
+rm -rf gpg-ownertrust.txt
