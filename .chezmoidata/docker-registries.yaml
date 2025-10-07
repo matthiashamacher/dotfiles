@@ -1,0 +1,8 @@
+docker:
+  registries:
+    - name: ghcr.io
+      username: matthiashamacher
+      password: op://Personal/Github/Access Tokens/Registry
+    - name: hub.docker.com
+      username: matthiashamacher
+      password: op://Personal/Docker/Access Tokens/Registry
