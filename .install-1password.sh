@@ -6,6 +6,8 @@ type op > /dev/null 2>&1 && exit
 # install 1password
 brew install 1password
 
+open -n /Applications/1Password.app
+
 # install 1password cli
 brew install 1password-cli
 
