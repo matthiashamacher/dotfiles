@@ -1,5 +1,7 @@
 #!/bin/sh
 
+open -n /Applications/Orbstack.app
+
 {{ range .docker.registries }}
 op read {{ .password | quote }} | docker login {{ .name }} --username {{ .username }} --password-stdin
 {{ end -}}
