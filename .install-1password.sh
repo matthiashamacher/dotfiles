@@ -4,10 +4,12 @@
 type op > /dev/null 2>&1 && exit
 
 # install 1password
-/opt/homebrew/bin/brew install 1password
+brew install 1password
 
 # install 1password cli
-/opt/homebrew/bin/brew install 1password-cli
+brew install 1password-cli
+
+source ~
 
 # Login to 1password if not already logged in
 if [ ! -f "${HOME}/.config/chezmoi/.1passwordlogin" ]; then
