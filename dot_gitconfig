@@ -1,0 +1,32 @@
+[commit]
+	gpgsign = true
+[gpg]
+	program = /opt/homebrew/bin/gpg
+	format = openpgp
+[core]
+	excludesfile = /Users/matthiashamacher/.gitignore
+	whitespace = space-before-tab,-indent-with-non-tab,trainiling-space
+	trustctime = false
+	precomposeunicode = false
+	untrackedCache = true
+[apply]
+	whitespace = fix
+[color]
+	ui = auto
+[diff]
+	renames = copies
+	colorMoved = zebra
+[diff "bin"]
+	textconv = hexdu
+[help]
+	autocorrect = 1
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemove = true
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[tag]
+	gpgsign = true
+[user]
+	name = Matthias Hamacher
