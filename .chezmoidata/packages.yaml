@@ -8,6 +8,7 @@ packages:
     - age
     - bat
     - composer
+    - chezmoi
     - dockutil
     - fzf
     - gh
