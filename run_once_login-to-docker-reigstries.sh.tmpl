@@ -2,6 +2,9 @@
 
 open -n /Applications/Orbstack.app
 
+read -s -p "Press any key when Orbstack is read and the docker command installed..."
+echo
+
 {{ range .docker.registries }}
 op read {{ .password | quote }} | docker login {{ .name }} --username {{ .username }} --password-stdin
 {{ end -}}
