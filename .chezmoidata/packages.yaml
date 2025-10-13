@@ -37,6 +37,7 @@ casks:
     - google-chrome
     - jetbrains-toolbox
     - jordanbaird-ice
+    - notion
     - orbstack
     - raycast
     - tableplus
