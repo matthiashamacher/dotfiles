@@ -3,6 +3,7 @@
 # Run dotfiles
 alias dotfiles="~/.dotfiles/bin/dotfiles"
 alias cz='chezmoi'
+alias op-login='eval $(op signin --chache)'
 
 # Navigation
 alias ..="cd .."
