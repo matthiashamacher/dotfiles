@@ -1,3 +1,9 @@
+[user]
+	name = Matthias Hamacher
+	email = {{ onepasswordRead "op://Private/Github/username" }}
+	signingkey = {{ onepasswordRead "op://Private/Github/Singing Keys/mhamacher.dev" }}
+[includeIf "gitdir:/Volumes/Projects/basecom/"]
+	path = /Users/matthiashamacher/.gitconfig_bsc
 [commit]
 	gpgsign = true
 [gpg]
@@ -28,7 +34,3 @@
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [tag]
 	gpgsign = true
-[user]
-	name = Matthias Hamacher
-	email = {{ onepasswordRead "op://Private/Github/username" }}
-	signingkey = {{ onepasswordRead "op://Private/Github/Singing Keys/mhamacher.dev" }}
