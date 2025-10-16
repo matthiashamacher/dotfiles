@@ -30,3 +30,5 @@
 	gpgsign = true
 [user]
 	name = Matthias Hamacher
+	email = {{ onepasswordRead "op://Private/Github/username" }}
+	signingkey = {{ onepasswordRead "op://Private/Github/Singing Keys/mhamacher.dev" }}

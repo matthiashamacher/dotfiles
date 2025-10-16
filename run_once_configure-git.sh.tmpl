@@ -1,8 +1,4 @@
 #!/bin/sh
 
-# Configure git
-git config set --global user.email {{ onepasswordRead "op://Private/Github/username" }}
-git config set --global user.signingkey {{ onepasswordRead "op://Private/Github/Singing Keys/mhamacher.dev" }}
-
 # Login to github
 op read "op://Private/Github/Access Tokens/GH CLI" | gh auth login --git-protocol ssh --with-token
