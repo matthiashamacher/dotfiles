@@ -2,3 +2,33 @@
 
 # .osx {{ include "executable_dot_osx" | sha256sum }}
 sudo ~/.osx
+
+
+# Remove all apps from the Dock
+defaults write com.apple.dock persistent-apps -array
+killall "Dock" > /dev/null 2>&1
+sleep 2
+
+# Configure dock
+# 1Password
+dockutil --add "/Applications/1Password.app/" --position 0 --label "1Password"
+# Google Chrome
+dockutil --add "/Applications/Google Chrome.app/" --after "1Password" --label "Google Chrome"
+# Slack
+dockutil --add "/Applications/Slack.app/" --after "Google Chrome" --label "Slack"
+# Warp 
+dockutil --add "/Applications/Warp.app/" --after "Slack" --label "Warp"
+# Tower
+dockutil --add "/Applications/Tower.app/" --after "Warp" --label "Tower"
+# Phpstorm
+dockutil --add "/Applications/PhpStorm.app/" --after "Tower" --label "PhpStorm"
+# Visual Studio Code
+dockutil --add "/Applications/Visual Studio Code.app/" --after "PhpStorm" --label "Visual Studio Code"
+
+## Add spacer
+# Daily Use Apps
+dockutil --add '' --type small-spacer --after "Google Chrome"
+# Communication Apps
+dockutil --add '' --type small-spacer --after "Slack"
+
+killall "Dock" > /dev/null 2>&1
