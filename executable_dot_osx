@@ -58,6 +58,17 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 1
 sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
 ###############################################################################
+# Window Manager                                                              #
+###############################################################################
+
+defaults write com.apple.WindowManager AppWindowGroupingBehavior -bool true
+defaults write com.apple.WindowManager AutoHide -bool false
+defaults write com.apple.WindowManager EnableTileWindowMargins -bool false
+defaults write com.apple.WindowManager HideDesktop -bool true
+defaults write com.apple.WindowManager StageManagerHideWidgets -bool false
+defaults write com.apple.WindowManager StandardHideWidgets -bool false
+
+###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
 
@@ -149,6 +160,10 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
 # Show the ~/Library folder
 chflags nohidden ~/Library
+
+# ICloud
+defaults write com.apple.finder FXICloudDriveDocuments -bool true
+defaults write com.apple.finder FXICloudDriveDesktop -bool true
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
