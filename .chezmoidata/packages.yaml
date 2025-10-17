@@ -2,11 +2,13 @@ taps:
   darwin:
     - platformsh/tap
     - symfony-cli/tap
+    - oven-sh/bun
     
 packages:
   darwin:
     - age
     - bat
+    - bun
     - composer
     - chezmoi
     - dockutil
