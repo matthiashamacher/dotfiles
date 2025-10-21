@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Folder structure is defined in .chezmoidata/folderstructure.yaml {{ include ".chezmoidata/folderstructure.yaml" | sha256sum }}
+
+# Create folder structure for basecom 
+echo "Creating folder structure for basecom..."
+{{ range .folderstructure.basecom}}
+mkdir -p "/Volumes/Projects/{{ . }}"
+{{ end }}

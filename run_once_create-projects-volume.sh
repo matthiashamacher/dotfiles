@@ -11,3 +11,11 @@ fi
 
 # Add volume
 diskutil apfs addVolume "$container" APFSX "Projects" -role D
+
+# Verify creation
+if [ $? -eq 0 ]; then
+    echo "Volume 'Projects' created successfully."
+else
+    echo "Failed to create volume 'Projects'."
+    exit 1
+fi

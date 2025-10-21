@@ -1,0 +1,10 @@
+folderstructure:
+  basecom:
+    - basecom
+    - basecom/Pimcore
+    - basecom/Pimcore/Customers
+    - basecom/Pimcore/Internal
+    - basecom/DevOps
+    - basecom/DevOps/Actions
+  private:
+    - Elternsprechtag\ Digital
