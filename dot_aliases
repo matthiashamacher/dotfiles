@@ -3,7 +3,7 @@
 # Run dotfiles
 alias dotfiles="~/.dotfiles/bin/dotfiles"
 alias cz='chezmoi'
-alias op-login='eval $(op signin --cache)'
+alias op-login='eval $(op signin --cache --account my.1password.eu)'
 
 # Navigation
 alias ..="cd .."
