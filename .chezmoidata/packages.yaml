@@ -39,6 +39,7 @@ casks:
     - google-chrome
     - jetbrains-toolbox
     - jordanbaird-ice
+    - microsoft-teams
     - notion
     - orbstack
     - raycast
