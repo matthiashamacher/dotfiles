@@ -14,10 +14,16 @@ sleep 2
 dockutil --add "/Applications/1Password.app/" --position 0 --label "1Password"
 # Google Chrome
 dockutil --add "/Applications/Google Chrome.app/" --after "1Password" --label "Google Chrome"
+# Blitzit
+dockutil --add "/Applications/Blitzit.app/" --after "Google Chrome" --label "Blitzit"
+# Notion
+dockutil --add "/Applications/Notion.app/" --after "Blitzit" --label "Notion"
 # Slack
-dockutil --add "/Applications/Slack.app/" --after "Google Chrome" --label "Slack"
+dockutil --add "/Applications/Slack.app/" --after "Notion" --label "Slack"
+# Microsoft Teams
+dockutil --add "/Applications/Microsoft Teams.app/" --after "Slack" --label "Microsoft Teams"
 # Warp 
-dockutil --add "/Applications/Warp.app/" --after "Slack" --label "Warp"
+dockutil --add "/Applications/Warp.app/" --after "Microsoft Teams" --label "Warp"
 # Tower
 dockutil --add "/Applications/Tower.app/" --after "Warp" --label "Tower"
 # Phpstorm
@@ -27,8 +33,8 @@ dockutil --add "/Applications/Visual Studio Code.app/" --after "PhpStorm" --labe
 
 ## Add spacer
 # Daily Use Apps
-dockutil --add '' --type small-spacer --after "Google Chrome"
+dockutil --add '' --type small-spacer --after "Notion"
 # Communication Apps
-dockutil --add '' --type small-spacer --after "Slack"
+dockutil --add '' --type small-spacer --after "Microsoft Teams"
 
 killall "Dock" > /dev/null 2>&1
