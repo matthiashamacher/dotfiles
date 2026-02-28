@@ -32,12 +32,13 @@ packages:
 
 casks:
   darwin:
+    - antigravity
     - bitwarden
     - bruno
     - cleanshot
+    - cursor
     - displaylink
     - google-chrome
-    - jetbrains-toolbox
     - jordanbaird-ice
     - microsoft-teams
     - notion
@@ -50,13 +51,6 @@ casks:
     - transmit
     - visual-studio-code
     - warp
-
-apps:
-  darwin:
-    - name: "WireGuard"
-      id: 1451685025
-    - name: "Amphetamine"
-      id: 937984704
 
 vscode:
   darwin:
