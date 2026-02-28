@@ -6,31 +6,31 @@ sudo ~/.osx
 
 # Remove all apps from the Dock
 defaults write com.apple.dock persistent-apps -array
-killall "Dock" > /dev/null 2>&1
+killall "Dock" > /dev/null 2>&1 || true
 sleep 2
 
 # Configure dock
 # 1Password
-dockutil --add "/Applications/1Password.app/" --position 0 --label "1Password"
+dockutil --add "/Applications/1Password.app/" --position 0 --label "1Password" --no-restart
 # Google Chrome
-dockutil --add "/Applications/Google Chrome.app/" --after "1Password" --label "Google Chrome"
+dockutil --add "/Applications/Google Chrome.app/" --after "1Password" --label "Google Chrome" --no-restart
 # Notion
-dockutil --add "/Applications/Notion.app/" --after "Google Chrome" --label "Notion"
+dockutil --add "/Applications/Notion.app/" --after "Google Chrome" --label "Notion" --no-restart
 # Slack
-dockutil --add "/Applications/Slack.app/" --after "Notion" --label "Slack"
+dockutil --add "/Applications/Slack.app/" --after "Notion" --label "Slack" --no-restart
 # Microsoft Teams
-dockutil --add "/Applications/Microsoft Teams.app/" --after "Slack" --label "Microsoft Teams"
+dockutil --add "/Applications/Microsoft Teams.app/" --after "Slack" --label "Microsoft Teams" --no-restart
 # Warp 
-dockutil --add "/Applications/Warp.app/" --after "Microsoft Teams" --label "Warp"
+dockutil --add "/Applications/Warp.app/" --after "Microsoft Teams" --label "Warp" --no-restart
 # Tower
-dockutil --add "/Applications/Tower.app/" --after "Warp" --label "Tower"
+dockutil --add "/Applications/Tower.app/" --after "Warp" --label "Tower" --no-restart
 # Cursor
-dockutil --add "/Applications/Cursor.app/" --after "Tower" --label "Cursor"
+dockutil --add "/Applications/Cursor.app/" --after "Tower" --label "Cursor" --no-restart
 
 ## Add spacer
 # Daily Use Apps
-dockutil --add '' --type small-spacer --after "Notion"
+dockutil --add spacer --type small-spacer --after "Notion" --no-restart
 # Communication Apps
-dockutil --add '' --type small-spacer --after "Microsoft Teams"
+dockutil --add spacer --type small-spacer --after "Microsoft Teams" --no-restart
 
-killall "Dock" > /dev/null 2>&1
+killall "Dock" > /dev/null 2>&1 || true
