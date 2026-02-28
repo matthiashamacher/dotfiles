@@ -11,11 +11,15 @@ brew {{ . | quote }}
 {{ range .casks.darwin -}}
 cask {{ . | quote }}
 {{ end -}}
+{{ if hasKey . "apps" -}}
 {{ range .apps.darwin -}}
 mas {{ .name | quote }}, id: {{ .id }}
 {{ end -}}
+{{ end -}}
+{{ if hasKey . "vscode" -}}
 {{ range .vscode.darwin -}}
 vscode {{ . | quote }}
+{{ end -}}
 {{ end -}}
 EOF
 {{ end -}}
