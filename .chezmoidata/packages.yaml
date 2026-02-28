@@ -32,6 +32,8 @@ packages:
 
 casks:
   darwin:
+    - 1password
+    - 1password-cli
     - antigravity
     - bitwarden
     - bruno
