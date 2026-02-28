@@ -3,6 +3,7 @@ taps:
     - platformsh/tap
     - symfony-cli/tap
     - oven-sh/bun
+    - ksdme/tap
     
 packages:
   darwin:
@@ -28,6 +29,7 @@ packages:
     - rage
     - symfony-cli/tap/symfony-cli
     - tailscale
+    - ut
     - zoxide
 
 casks:
