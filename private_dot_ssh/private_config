@@ -6,8 +6,8 @@ Host *
 # Include custom configs
 Include ~/.ssh/configs/*.config
 
-# BEGIN: Platform.sh certificate configuration
-Host *.platform.sh
-  Include /Users/matthiashamacher/.platformsh/ssh/*.config
+# BEGIN: Upsun certificate configuration
+Host *.platform.sh *.upsun.com
+  Include /Users/matthiashamacher/.upsun-cli/ssh/*.config
 Host *
-# END: Platform.sh certificate configuration
+# END: Upsun certificate configuration
