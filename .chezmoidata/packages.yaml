@@ -25,6 +25,7 @@ packages:
     - php
     - pinentry-mac
     - platformsh/tap/platformsh-cli
+    - platformsh/tap/upsun-cli
     - pulumi
     - rage
     - symfony-cli/tap/symfony-cli
