@@ -16,13 +16,9 @@ alias -- -="cd -"
 
 # Shortcuts
 # Tools
-alias psh="platform"
 #alias k="kubectl"
 #alias tf="terraform"
 alias dbii="docker buildx imagetools inspect"
-alias dep="/Users/matthiashamacher/.composer/vendor/bin/dep"
-alias pimcore="PLATFORMSH_CLI_SESSION_ID=pimcore_paas PLATFORMSH_CLI_API_URL=https://api.pimcore.cloud PLATFORMSH_CLI_AUTH_URL=https://auth.pimcore.cloud/ PLATFORMSH_CLI_API_VENDOR_FILTER=pimcore platform"
-alias shopware="PLATFORMSH_CLI_SESSION_ID=shopware_paas PLATFORMSH_CLI_API_URL=https://proxy.shopware.com PLATFORMSH_CLI_AUTH_URL=https://psh-auth.shopware.com/ PLATFORMSH_CLI_API_VENDOR_FILTER=shopware platform"
 alias j="just"
 
 # grep
@@ -68,5 +64,3 @@ alias sshcopy='pbcopy < ~/.ssh/id_ed25519.pub'
 
 # Edit SSH Config
 alias ssheditm='nvim ~/.ssh/config'
-alias ssheditw='nvim ~/.ssh/configs/work.config'
-alias ssheditp='nvim ~/.ssh/configs/private.config'

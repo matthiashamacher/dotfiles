@@ -1,1 +1,4 @@
 key.txt.age
+{{ if ne (index . "profile" | default "private") "work" }}dot_gitconfig_bsc{{ end }}
+{{ if ne (index . "profile" | default "private") "work" }}dot_aliases_work{{ end }}
+{{ if ne (index . "profile" | default "private") "private" }}dot_aliases_private{{ end }}

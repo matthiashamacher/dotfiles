@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# SSH Config
+alias ssheditp='nvim ~/.ssh/configs/private.config'

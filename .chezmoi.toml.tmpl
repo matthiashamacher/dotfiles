@@ -1,4 +1,8 @@
+{{- $profile := promptStringOnce . "profile" "Profile (work/private)" -}}
 encryption = "age"
+
+[data]
+    profile = {{ $profile | quote }}
 
 [git]
     autoCommit = true

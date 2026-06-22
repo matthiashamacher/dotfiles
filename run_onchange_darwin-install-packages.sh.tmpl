@@ -1,15 +1,31 @@
+{{- $profile := index . "profile" | default "private" -}}
 {{ if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
 
 brew bundle --cleanup --file=/dev/stdin <<EOF
-{{ range .taps.darwin -}}
+{{ range .taps.darwin.common -}}
 tap {{ . | quote }}
 {{ end -}}
-{{ range .packages.darwin -}}
+{{ if eq $profile "work" -}}
+{{ range .taps.darwin.work -}}
+tap {{ . | quote }}
+{{ end -}}
+{{ end -}}
+{{ range .packages.darwin.common -}}
 brew {{ . | quote }}
 {{ end -}}
-{{ range .casks.darwin -}}
+{{ if eq $profile "work" -}}
+{{ range .packages.darwin.work -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ end -}}
+{{ range .casks.darwin.common -}}
 cask {{ . | quote }}
+{{ end -}}
+{{ if eq $profile "work" -}}
+{{ range .casks.darwin.work -}}
+cask {{ . | quote }}
+{{ end -}}
 {{ end -}}
 {{ if hasKey . "apps" -}}
 {{ range .apps.darwin -}}

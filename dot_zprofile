@@ -25,6 +25,10 @@ for file in ~/.{exports,aliases,functions}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 
+# Source profile-specific aliases (only one will exist depending on profile)
+[[ -f ~/.aliases_work ]] && source ~/.aliases_work
+[[ -f ~/.aliases_private ]] && source ~/.aliases_private
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion

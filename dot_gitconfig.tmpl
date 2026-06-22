@@ -1,9 +1,12 @@
+{{- $profile := index . "profile" | default "private" -}}
 [user]
 	name = Matthias Hamacher
-	email = {{ onepasswordRead "op://Private/Github/username" }}
-	signingkey = {{ onepasswordRead "op://Private/Github/Singing Keys/mhamacher.dev" }}
+	email = {{ if eq $profile "work" }}{{ onepasswordRead "op://Private/Github/basecom" }}{{ else }}{{ onepasswordRead "op://Private/Github/username" }}{{ end }}
+	signingkey = {{ if eq $profile "work" }}{{ onepasswordRead "op://Private/Github/Singing Keys/basecom" }}{{ else }}{{ onepasswordRead "op://Private/Github/Singing Keys/mhamacher.dev" }}{{ end }}
+{{ if eq $profile "work" -}}
 [includeIf "gitdir:/Volumes/Projects/basecom/"]
 	path = /Users/matthiashamacher/.gitconfig_bsc
+{{ end -}}
 [commit]
 	gpgsign = true
 [gpg]

@@ -1,3 +1,4 @@
+{{- $profile := index . "profile" | default "private" -}}
 Include ~/.orbstack/ssh/config
 
 Host *
@@ -6,8 +7,10 @@ Host *
 # Include custom configs
 Include ~/.ssh/configs/*.config
 
+{{ if eq $profile "work" -}}
 # BEGIN: Upsun certificate configuration
 Host *.platform.sh *.upsun.com
   Include /Users/matthiashamacher/.upsun-cli/ssh/*.config
 Host *
 # END: Upsun certificate configuration
+{{ end -}}

@@ -1,3 +1,4 @@
+{{- $profile := index . "profile" | default "private" -}}
 #!/bin/sh
 
 # .osx {{ include "executable_dot_osx" | sha256sum }}
@@ -9,7 +10,8 @@ defaults write com.apple.dock persistent-apps -array
 killall "Dock" > /dev/null 2>&1 || true
 sleep 2
 
-# Configure dock
+{{ if eq $profile "work" -}}
+# Work dock: daily tools → communication → dev tools
 # 1Password
 dockutil --add "/Applications/1Password.app/" --position 0 --label "1Password" --no-restart
 # Google Chrome
@@ -20,17 +22,35 @@ dockutil --add "/Applications/Notion.app/" --after "Google Chrome" --label "Noti
 dockutil --add "/Applications/Slack.app/" --after "Notion" --label "Slack" --no-restart
 # Microsoft Teams
 dockutil --add "/Applications/Microsoft Teams.app/" --after "Slack" --label "Microsoft Teams" --no-restart
-# Warp 
+# Warp
 dockutil --add "/Applications/Warp.app/" --after "Microsoft Teams" --label "Warp" --no-restart
 # Tower
 dockutil --add "/Applications/Tower.app/" --after "Warp" --label "Tower" --no-restart
 # Cursor
 dockutil --add "/Applications/Cursor.app/" --after "Tower" --label "Cursor" --no-restart
 
-## Add spacer
-# Daily Use Apps
+# Spacers
 dockutil --add spacer --type small-spacer --after "Notion" --no-restart
-# Communication Apps
 dockutil --add spacer --type small-spacer --after "Microsoft Teams" --no-restart
+{{ else -}}
+# Private dock: daily tools → dev → media
+# 1Password
+dockutil --add "/Applications/1Password.app/" --position 0 --label "1Password" --no-restart
+# Google Chrome
+dockutil --add "/Applications/Google Chrome.app/" --after "1Password" --label "Google Chrome" --no-restart
+# Notion
+dockutil --add "/Applications/Notion.app/" --after "Google Chrome" --label "Notion" --no-restart
+# Warp
+dockutil --add "/Applications/Warp.app/" --after "Notion" --label "Warp" --no-restart
+# Visual Studio Code
+dockutil --add "/Applications/Visual Studio Code.app/" --after "Warp" --label "Visual Studio Code" --no-restart
+# Tower
+dockutil --add "/Applications/Tower.app/" --after "Visual Studio Code" --label "Tower" --no-restart
+# Spotify
+dockutil --add "/Applications/Spotify.app/" --after "Tower" --label "Spotify" --no-restart
+
+# Spacer
+dockutil --add spacer --type small-spacer --after "Notion" --no-restart
+{{ end -}}
 
 killall "Dock" > /dev/null 2>&1 || true

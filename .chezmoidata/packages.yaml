@@ -1,58 +1,64 @@
 taps:
   darwin:
-    - platformsh/tap
-    - symfony-cli/tap
-    - oven-sh/bun
-    - ksdme/tap
-    
+    common:
+      - symfony-cli/tap
+      - oven-sh/bun
+      - ksdme/tap
+    work:
+      - platformsh/tap
+
 packages:
   darwin:
-    - age
-    - bat
-    - bun
-    - composer
-    - chezmoi
-    - dockutil
-    - fzf
-    - gh
-    - github-keygen
-    - gnupg
-    - jq
-    - just
-    - mas
-    - neovim
-    - node
-    - php
-    - pinentry-mac
-    - platformsh/tap/platformsh-cli
-    - platformsh/tap/upsun-cli
-    - pulumi
-    - rage
-    - symfony-cli/tap/symfony-cli
-    - tailscale
-    - ut
-    - zoxide
+    common:
+      - age
+      - bat
+      - bun
+      - composer
+      - chezmoi
+      - dockutil
+      - fzf
+      - gh
+      - github-keygen
+      - gnupg
+      - jq
+      - just
+      - mas
+      - neovim
+      - node
+      - php
+      - pinentry-mac
+      - rage
+      - symfony-cli/tap/symfony-cli
+      - tailscale
+      - ut
+      - zoxide
+    work:
+      - platformsh/tap/platformsh-cli
+      - platformsh/tap/upsun-cli
+      - pulumi
 
 casks:
   darwin:
-    - 1password
-    - 1password-cli
-    - antigravity
-    - bitwarden
-    - bruno
-    - cleanshot
-    - cursor
-    - displaylink
-    - google-chrome
-    - jordanbaird-ice
-    - microsoft-teams
-    - notion
-    - orbstack
-    - raycast
-    - tableplus
-    - slack
-    - spotify
-    - tower
-    - transmit
-    - visual-studio-code
-    - warp
+    common:
+      - 1password
+      - 1password-cli
+      - antigravity
+      - bitwarden
+      - bruno
+      - cleanshot
+      - displaylink
+      - google-chrome
+      - jordanbaird-ice
+      - notion
+      - orbstack
+      - raycast
+      - spotify
+      - tableplus
+      - tower
+      - transmit
+      - visual-studio-code
+      - warp
+    work:
+      - cursor
+      - microsoft-teams
+      - slack
