@@ -6,6 +6,7 @@ taps:
       - ksdme/tap
     work:
       - platformsh/tap
+      - upsun/tap
 
 packages:
   darwin:
@@ -35,6 +36,7 @@ packages:
     work:
       - platformsh/tap/platformsh-cli
       - platformsh/tap/upsun-cli
+      - upsun/tap/upsun-cli
       - pulumi
 
 casks:
