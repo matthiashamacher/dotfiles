@@ -1,4 +1,4 @@
-{{- $profile := promptStringOnce . "profile" "Profile (work/private)" -}}
+{{- $profile := (stdinIsATTY | ternary (promptStringOnce . "profile" "Profile (work/private)") "private") -}}
 encryption = "age"
 
 [data]
