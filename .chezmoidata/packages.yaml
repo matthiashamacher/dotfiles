@@ -46,7 +46,6 @@ casks:
       - bitwarden
       - bruno
       - cleanshot
-      - displaylink
       - google-chrome
       - jordanbaird-ice
       - notion
