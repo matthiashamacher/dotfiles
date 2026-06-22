@@ -57,6 +57,7 @@ casks:
       - transmit
       - visual-studio-code
       - ghostty
+      - claude
     work:
       - cursor
       - microsoft-teams
