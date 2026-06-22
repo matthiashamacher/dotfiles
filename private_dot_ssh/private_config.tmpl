@@ -13,4 +13,10 @@ Host *.platform.sh *.upsun.com
   Include /Users/matthiashamacher/.upsun-cli/ssh/*.config
 Host *
 # END: Upsun certificate configuration
+
+# BEGIN: Upsun (formerly Platform.sh) certificate configuration
+Host *.platform.sh
+  Include /Users/matthiashamacher/.platformsh/ssh/*.config
+Host *
+# END: Upsun (formerly Platform.sh) certificate configuration
 {{ end -}}

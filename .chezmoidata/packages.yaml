@@ -21,6 +21,7 @@ packages:
       - gh
       - github-keygen
       - gnupg
+      - go
       - jq
       - just
       - mas
