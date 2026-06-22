@@ -44,12 +44,10 @@ casks:
     common:
       - 1password
       - 1password-cli
-      - antigravity
       - bitwarden
       - bruno
       - cleanshot
       - google-chrome
-      - jordanbaird-ice
       - notion
       - orbstack
       - raycast
@@ -58,7 +56,7 @@ casks:
       - tower
       - transmit
       - visual-studio-code
-      - warp
+      - ghostty
     work:
       - cursor
       - microsoft-teams
