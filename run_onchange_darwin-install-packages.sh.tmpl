@@ -2,6 +2,15 @@
 {{ if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
 
+{{ range .taps.darwin.common -}}
+brew trust {{ . | quote }}
+{{ end -}}
+{{ if eq $profile "work" -}}
+{{ range .taps.darwin.work -}}
+brew trust {{ . | quote }}
+{{ end -}}
+{{ end -}}
+
 brew bundle --cleanup --file=/dev/stdin <<EOF
 {{ range .taps.darwin.common -}}
 tap {{ . | quote }}
