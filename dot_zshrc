@@ -53,3 +53,5 @@ _zb_path_append "$ZEROBREW_PREFIX/bin"
 [ -s "/Users/matthiashamacher/.bun/_bun" ] && source "/Users/matthiashamacher/.bun/_bun"
 
 eval "$(starship init zsh)"
+
+bindkey '\e\x7f' backward-kill-word

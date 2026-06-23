@@ -1,1 +1,2 @@
-macos-option-as-alt = true
+keybind = opt+backspace=text:\x17
+keybind = backspace=text:\x08
