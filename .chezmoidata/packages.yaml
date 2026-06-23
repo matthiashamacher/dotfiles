@@ -33,6 +33,7 @@ packages:
       - symfony-cli/tap/symfony-cli
       - tailscale
       - ut
+      - starship
       - zoxide
     work:
       - platformsh/tap/platformsh-cli

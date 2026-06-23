@@ -20,6 +20,7 @@ source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(starship init zsh)"
 
 for file in ~/.{exports,aliases,functions}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
