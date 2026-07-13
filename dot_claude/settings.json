@@ -31,7 +31,8 @@
     "sentry@claude-plugins-official": true,
     "supabase@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
-    "vercel@claude-plugins-official": true
+    "vercel@claude-plugins-official": true,
+    "ponytail@ponytail": true
   },
   "extraKnownMarketplaces": {
     "caveman": {
@@ -51,6 +52,12 @@
       "source": {
         "source": "github",
         "repo": "supabase/agent-skills"
+      }
+    },
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
       }
     }
   },
