@@ -12,3 +12,4 @@ Thumbs.db
 
 # AI
 .claude/settings.local.json
+graphify-out/

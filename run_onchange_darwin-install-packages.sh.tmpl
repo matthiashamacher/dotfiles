@@ -49,4 +49,13 @@ vscode {{ . | quote }}
 EOF
 
 rtk init -g --auto-patch
+
+{{ range .uvTools.darwin.common -}}
+uv tool install --upgrade {{ . | quote }} -q
+{{ end -}}
+{{ if eq $profile "work" -}}
+{{ range .uvTools.darwin.work -}}
+uv tool install --upgrade {{ . | quote }} -q
+{{ end -}}
+{{ end -}}
 {{ end -}}

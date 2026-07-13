@@ -35,12 +35,19 @@ packages:
       - tailscale
       - ut
       - starship
+      - uv
       - zoxide
     work:
       - platformsh/tap/platformsh-cli
       - platformsh/tap/upsun-cli
       - upsun/tap/upsun-cli
       - pulumi
+
+uvTools:
+  darwin:
+    common:
+      - graphifyy
+    work: []
 
 casks:
   darwin:
