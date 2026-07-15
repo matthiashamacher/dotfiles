@@ -1,0 +1,12 @@
+#!/bin/sh
+
+add_if_missing() {
+  name="$1"
+  shift
+  if ! claude mcp get "$name" --scope user >/dev/null 2>&1; then
+    claude mcp add --scope user "$name" "$@"
+  fi
+}
+
+add_if_missing context7 --transport http https://mcp.context7.com/mcp
+add_if_missing tabularis -- /Applications/tabularis.app/Contents/MacOS/tabularis --mcp
