@@ -2,6 +2,8 @@
 {{ if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
 
+[ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
 {{ range .taps.darwin.common -}}
 brew trust {{ . | quote }}
 {{ end -}}
