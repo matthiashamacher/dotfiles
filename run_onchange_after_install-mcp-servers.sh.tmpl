@@ -5,8 +5,8 @@
 add_if_missing() {
   name="$1"
   shift
-  if ! claude mcp get "$name" --scope user >/dev/null 2>&1; then
-    claude mcp add --scope user "$name" "$@"
+  if ! claude mcp get "$name" >/dev/null 2>&1; then
+    claude mcp add --scope user "$name" "$@" || echo "warning: failed to add MCP server $name" >&2
   fi
 }
 
