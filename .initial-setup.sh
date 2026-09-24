@@ -1,6 +1,5 @@
 #!/bin/sh
 
-.local/share/chezmoi/.install-xcode-clt.sh
 .local/share/chezmoi/.install-homebrew.sh
 .local/share/chezmoi/.install-1password.sh
 
