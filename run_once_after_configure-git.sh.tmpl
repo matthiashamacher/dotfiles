@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Runs after package installation so gh is available
+if ! command -v gh >/dev/null 2>&1; then
+  echo "gh not found, skipping GitHub login" >&2
+  exit 0
+fi
+
+# Nothing to do if already logged in
+if gh auth status -h github.com >/dev/null 2>&1; then
+  exit 0
+fi
+
+# Login with the stored token, fall back to interactive login if it is missing or invalid
+if op read "op://Private/Github/Access Tokens/GH CLI" \
+  | env -u GH_TOKEN -u GITHUB_TOKEN gh auth login -h github.com --git-protocol ssh --with-token; then
+  exit 0
+fi
+
+echo "GitHub token from 1Password missing or invalid, starting interactive login" >&2
+env -u GH_TOKEN -u GITHUB_TOKEN gh auth login -h github.com --git-protocol ssh --web

@@ -11,7 +11,7 @@ brew trust {{ . | quote }}
 {{ end -}}
 {{ end -}}
 
-brew bundle --cleanup --file=/dev/stdin <<EOF
+brew bundle --file=/dev/stdin <<EOF
 {{ range .taps.darwin.common -}}
 tap {{ . | quote }}
 {{ end -}}
