@@ -60,7 +60,6 @@ alias vimedit="cd ~/.config/nvim && nvim ."
 
 # SSH
 # Copy SSH Key
-alias sshcopy='pbcopy < ~/.ssh/id_ed25519.pub'
 
 # Edit SSH Config
 alias ssheditm='nvim ~/.ssh/config'
