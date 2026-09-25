@@ -1,0 +1,51 @@
+#!/bin/sh
+
+[ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Repos are defined in .chezmoidata/repos.yaml {{ include ".chezmoidata/repos.yaml" | sha256sum }}
+# Private/internal repos are NOT listed here in clear text — they live
+# age-encrypted in repos-private.yaml.age (chezmoi's configured recipient/
+# identity) as JSON: [{"repo": "org/name", "path": "Private/name"}, ...]
+# and are decrypted only in memory at apply time.
+{{ if (stat (joinPath .chezmoi.sourceDir "repos-private.yaml.age")) -}}
+# {{ include "repos-private.yaml.age" | sha256sum }}
+{{- end }}
+
+DEV_DIR="{{ $.chezmoi.homeDir }}/dev"
+
+if ! command -v gh >/dev/null 2>&1; then
+  echo "gh not found, skipping repo clone" >&2
+  exit 0
+fi
+
+clone_repo() {
+  repo="$1"
+  path="$2"
+  target="${DEV_DIR}/${path}"
+
+  if [ -d "${target}/.git" ]; then
+    return 0
+  fi
+
+  mkdir -p "$(dirname "${target}")"
+  echo "Cloning ${repo} -> ${target}"
+  gh repo clone "${repo}" "${target}"
+}
+
+# Public repositories
+{{ range .repos.public -}}
+clone_repo {{ .repo | quote }} {{ .path | quote }}
+{{ end -}}
+
+# Private & internal repositories (names never touch the dotfiles source
+# in clear text — decrypted here at apply time only)
+{{ if (stat (joinPath .chezmoi.sourceDir "repos-private.yaml.age")) -}}
+PRIVATE_REPOS_JSON=$(cat <<'PRIVATE_REPOS_EOF'
+{{ include "repos-private.yaml.age" | decrypt }}
+PRIVATE_REPOS_EOF
+)
+
+echo "${PRIVATE_REPOS_JSON}" | jq -r '.[] | "\(.repo)\t\(.path)"' | while IFS="$(printf '\t')" read -r repo path; do
+  clone_repo "${repo}" "${path}"
+done
+{{- end }}

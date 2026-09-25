@@ -13,11 +13,6 @@ if gh auth status -h github.com >/dev/null 2>&1; then
   exit 0
 fi
 
-# Login with the stored token, fall back to interactive login if it is missing or invalid
-if op read "op://Private/i7ele4uunzhsfftktty3xw7l7i/u5ehqx627y3dlii5pujv4xepui" \
-  | env -u GH_TOKEN -u GITHUB_TOKEN gh auth login -h github.com --git-protocol ssh --with-token; then
-  exit 0
-fi
-
-echo "GitHub token from 1Password missing or invalid, starting interactive login" >&2
+# Browser/OAuth login — an OAuth App token, unlike a classic PAT, isn't
+# blocked by orgs that forbid personal access tokens (classic)
 env -u GH_TOKEN -u GITHUB_TOKEN gh auth login -h github.com --git-protocol ssh --web

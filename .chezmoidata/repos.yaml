@@ -1,0 +1,6 @@
+repos:
+  # Public GitHub repos — safe to list in clear text.
+  # path is relative to ~/dev
+  public:
+    - repo: matthiashamacher/pulumi-ohdear
+      path: "Private/pulumi-ohdear"
