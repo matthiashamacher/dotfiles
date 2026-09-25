@@ -30,8 +30,8 @@ dockutil --add "/Applications/Tower.app/" --after "Ghostty" --label "Tower" --no
 dockutil --add "/Applications/Cursor.app/" --after "Tower" --label "Cursor" --no-restart
 
 # Spacers
-dockutil --add spacer --type small-spacer --after "Notion" --no-restart
-dockutil --add spacer --type small-spacer --after "Microsoft Teams" --no-restart
+dockutil --add '' --type small-spacer --after "Notion" --no-restart
+dockutil --add '' --type small-spacer --after "Microsoft Teams" --no-restart
 {{ else -}}
 # Private dock: daily tools → dev → media
 # 1Password
@@ -50,7 +50,7 @@ dockutil --add "/Applications/Tower.app/" --after "Visual Studio Code" --label "
 dockutil --add "/Applications/Spotify.app/" --after "Tower" --label "Spotify" --no-restart
 
 # Spacer
-dockutil --add spacer --type small-spacer --after "Notion" --no-restart
+dockutil --add '' --type small-spacer --after "Notion" --no-restart
 {{ end -}}
 
 killall "Dock" > /dev/null 2>&1 || true
