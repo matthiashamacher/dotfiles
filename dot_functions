@@ -72,3 +72,21 @@ knownrm() {
    sed -i '' "$1d" ~/.ssh/known_hosts
  fi
 }
+
+# Use a separate Claude Code account/config for MAHA Digital GmbH projects.
+_claude_config_dir_update() {
+	case "$PWD" in
+		"$HOME/dev/MAHA Digital GmbH"|"$HOME/dev/MAHA Digital GmbH"/*)
+			export CLAUDE_CONFIG_DIR="$HOME/.claude-maha-digital-gmbh"
+			;;
+		*)
+			unset CLAUDE_CONFIG_DIR
+			;;
+	esac
+}
+
+if [[ -n "$ZSH_VERSION" ]]; then
+	autoload -Uz add-zsh-hook
+	add-zsh-hook chpwd _claude_config_dir_update
+	_claude_config_dir_update
+fi
