@@ -2,9 +2,11 @@
 
 [ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
-echo {{ onepasswordDocument "vu4e6zkexu5e6qymj3qrze4idy" | quote }} > gpg-secret-keys.asc
-echo {{ onepasswordDocument "p4k62id7ugf3qwwgp5mns3cmaq" | quote }} > gpg-public-keys.asc
-echo "{{- onepasswordDocument "um7h7ltuyn3wxnqiod6z4huq7y" -}}\c" > gpg-ownertrust.txt
+echo {{ onepasswordRead "op://Private/ztjh3xduukryzqxwkwewdsimse/gpg-devops.asc" | quote }} > gpg-devops.asc
+echo {{ onepasswordRead "op://Private/ztjh3xduukryzqxwkwewdsimse/gpg-devops-pub.asc" | quote }} > gpg-devops-pub.asc
+echo {{ onepasswordRead "op://Employee/t424yskrfwoaionfklgv3laqlm/gpg-maha.asc" "mahadigital.1password.eu" | quote }} > gpg-maha.asc
+echo {{ onepasswordRead "op://Employee/t424yskrfwoaionfklgv3laqlm/gpg-maha-pub.asc" "mahadigital.1password.eu" | quote }} > gpg-maha-pub.asc
+echo "{{- onepasswordDocument "744emxxksnmhnxx234ibuqh6me" -}}\c" > gpg-ownertrust.txt
 
 gpg --import gpg*.asc
 gpg --import-ownertrust gpg-ownertrust.txt
