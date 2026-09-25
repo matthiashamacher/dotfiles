@@ -4,6 +4,7 @@ taps:
       - symfony-cli/tap
       - oven-sh/bun
       - ksdme/tap
+      - supabase/tap
     work:
       - platformsh/tap
       - upsun/tap
@@ -31,11 +32,13 @@ packages:
       - pinentry-mac
       - rage
       - rtk
+      - supabase/tap/supabase
       - symfony-cli/tap/symfony-cli
       - tailscale
       - ut
       - starship
       - uv
+      - vercel
       - zoxide
     work:
       - platformsh/tap/platformsh-cli
