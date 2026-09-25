@@ -30,6 +30,7 @@ packages:
       - node
       - php
       - pinentry-mac
+      - pnpm
       - rage
       - rtk
       - supabase/tap/supabase
