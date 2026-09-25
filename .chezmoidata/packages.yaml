@@ -58,7 +58,6 @@ casks:
       - bruno
       - cleanshot
       - google-chrome
-      - notion
       - orbstack
       - raycast
       - spotify
