@@ -5,10 +5,14 @@
 sudo ~/.osx
 
 
-# Remove all apps from the Dock
+# Remove all apps and folders/stacks from the Dock
 defaults write com.apple.dock persistent-apps -array
+defaults write com.apple.dock persistent-others -array
 killall "Dock" > /dev/null 2>&1 || true
 sleep 2
+
+# Hide recent apps in Dock
+defaults write com.apple.dock show-recents -bool false
 
 {{ if eq $profile "work" -}}
 # Work dock: daily tools → communication → dev tools
@@ -30,6 +34,9 @@ dockutil --add "/Applications/Cursor.app/" --after "Tower" --label "Cursor" --no
 # Spacers
 dockutil --add '' --type small-spacer --after "Google Chrome" --no-restart
 dockutil --add '' --type small-spacer --after "Microsoft Teams" --no-restart
+
+# Downloads stack
+dockutil --add "~/Downloads" --view grid --display stack --section others --no-restart
 {{ else -}}
 # Private dock: daily tools → dev → media
 # 1Password
@@ -47,6 +54,9 @@ dockutil --add "/Applications/Spotify.app/" --after "Tower" --label "Spotify" --
 
 # Spacer
 dockutil --add '' --type small-spacer --after "Google Chrome" --no-restart
+
+# Downloads stack
+dockutil --add "~/Downloads" --view grid --display stack --section others --no-restart
 {{ end -}}
 
 killall "Dock" > /dev/null 2>&1 || true
