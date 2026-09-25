@@ -1,3 +1,4 @@
 folderstructure:
-  private:
-    - Elternsprechtag\ Digital
+  dev:
+    - "MAHA Digital GmbH/Elternsprechtag Digital"
+    - "Private"

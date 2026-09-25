@@ -2,8 +2,8 @@
 
 # Folder structure is defined in .chezmoidata/folderstructure.yaml {{ include ".chezmoidata/folderstructure.yaml" | sha256sum }}
 
-# Create private folder structure
-echo "Creating private folder structure..."
-{{ range .folderstructure.private -}}
-mkdir -p "/Volumes/Projects/{{ . }}"
+# Create dev folder structure
+echo "Creating dev folder structure..."
+{{ range .folderstructure.dev -}}
+mkdir -p "{{ $.chezmoi.homeDir }}/dev/{{ . }}"
 {{ end -}}
