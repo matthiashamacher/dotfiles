@@ -1,5 +1,5 @@
 
-. "$HOME/.local/bin/env"
+[[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
 # >>> zerobrew >>>
 # zerobrew
 export ZEROBREW_DIR=/Users/matthiashamacher/.zerobrew
