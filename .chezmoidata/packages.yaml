@@ -71,7 +71,6 @@ casks:
       - visual-studio-code
       - ghostty
       - claude
-      - claude-code
     work:
       - cursor
       - microsoft-teams
