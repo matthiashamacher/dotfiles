@@ -55,3 +55,4 @@ _zb_path_append "$ZEROBREW_PREFIX/bin"
 eval "$(starship init zsh)"
 
 bindkey '\e\x7f' backward-kill-word
+export PATH="$HOME/.local/bin:$PATH"
