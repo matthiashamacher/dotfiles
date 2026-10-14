@@ -32,5 +32,7 @@
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [tag]
 	gpgsign = true
+{{- if ne (index . "profile" | default "private") "work" }}
 [includeIf "gitdir:~/dev/MAHA Digital GmbH/"]
 	path = ~/.gitconfig-maha-digital
+{{- end }}
