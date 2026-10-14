@@ -22,3 +22,8 @@ export HOMEBREW_AUTO_UPDATE_SECS=604800
 
 # Allow Composer to use almost as much RAM as Chrome.
 export COMPOSER_MEMORY_LIMIT=-1
+{{- if eq (index . "profile" | default "private") "work" }}
+
+# Use the Bitwarden SSH agent (also needed by ssh-keygen for git commit signing).
+export SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
+{{- end }}

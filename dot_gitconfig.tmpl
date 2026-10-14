@@ -1,12 +1,22 @@
+{{- $profile := index . "profile" | default "private" -}}
 [user]
 	name = Matthias Hamacher
+{{- if eq $profile "work" }}
+	email = {{ onepasswordRead "op://Private/i7ele4uunzhsfftktty3xw7l7i/ttytly42iyfcohwaz5nvrsto3y" }}
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ0CanEfcHNHb869NpeTg8PbkRYNXnwyngaZMmqw+WuT
+{{- else }}
 	email = {{ onepasswordRead "op://Private/i7ele4uunzhsfftktty3xw7l7i/username" }}
 	signingkey = {{ onepasswordRead "op://Private/i7ele4uunzhsfftktty3xw7l7i/ebdajaradpqgri33hhami2jyre" }}
+{{- end }}
 [commit]
 	gpgsign = true
 [gpg]
+{{- if eq $profile "work" }}
+	format = ssh
+{{- else }}
 	program = /opt/homebrew/bin/gpg
 	format = openpgp
+{{- end }}
 [core]
 	excludesfile = /Users/matthiashamacher/.gitignore
 	whitespace = space-before-tab,-indent-with-non-tab,trainiling-space
@@ -28,11 +38,13 @@
 	defaultBranch = main
 [push]
 	autoSetupRemove = true
+{{- if ne $profile "work" }}
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+{{- end }}
 [tag]
 	gpgsign = true
-{{- if ne (index . "profile" | default "private") "work" }}
+{{- if ne $profile "work" }}
 [includeIf "gitdir:~/dev/MAHA Digital GmbH/"]
 	path = ~/.gitconfig-maha-digital
 {{- end }}
