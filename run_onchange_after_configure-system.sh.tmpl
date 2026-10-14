@@ -16,24 +16,22 @@ defaults write com.apple.dock show-recents -bool false
 
 {{ if eq $profile "work" -}}
 # Work dock: daily tools → communication → dev tools
-# 1Password
-dockutil --add "/Applications/1Password.app/" --position 0 --label "1Password" --no-restart
+# Bitwarden
+dockutil --add "/Applications/Bitwarden.app/" --position 0 --label "Bitwarden" --no-restart
 # Google Chrome
-dockutil --add "/Applications/Google Chrome.app/" --after "1Password" --label "Google Chrome" --no-restart
-# Slack
-dockutil --add "/Applications/Slack.app/" --after "Google Chrome" --label "Slack" --no-restart
+dockutil --add "/Applications/Google Chrome.app/" --after "Bitwarden" --label "Google Chrome" --no-restart
 # Microsoft Teams
-dockutil --add "/Applications/Microsoft Teams.app/" --after "Slack" --label "Microsoft Teams" --no-restart
+dockutil --add "/Applications/Microsoft Teams.app/" --after "Google Chrome" --label "Microsoft Teams" --no-restart
+# Microsoft Outlook
+dockutil --add "/Applications/Microsoft Outlook.app/" --after "Microsoft Teams" --label "Microsoft Outlook" --no-restart
 # Ghostty
-dockutil --add "/Applications/Ghostty.app/" --after "Microsoft Teams" --label "Ghostty" --no-restart
+dockutil --add "/Applications/Ghostty.app/" --after "Microsoft Outlook" --label "Ghostty" --no-restart
 # Tower
 dockutil --add "/Applications/Tower.app/" --after "Ghostty" --label "Tower" --no-restart
-# Cursor
-dockutil --add "/Applications/Cursor.app/" --after "Tower" --label "Cursor" --no-restart
 
 # Spacers
 dockutil --add '' --type small-spacer --after "Google Chrome" --no-restart
-dockutil --add '' --type small-spacer --after "Microsoft Teams" --no-restart
+dockutil --add '' --type small-spacer --after "Microsoft Outlook" --no-restart
 
 # Downloads stack
 dockutil --add "~/Downloads" --view grid --display stack --section others --no-restart
