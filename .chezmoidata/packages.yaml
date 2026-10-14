@@ -4,10 +4,11 @@ taps:
       - symfony-cli/tap
       - oven-sh/bun
       - ksdme/tap
-      - supabase/tap
     work:
       - platformsh/tap
       - upsun/tap
+    private:
+      - supabase/tap
 
 packages:
   darwin:
@@ -33,36 +34,35 @@ packages:
       - pnpm
       - rage
       - rtk
-      - supabase/tap/supabase
       - symfony-cli/tap/symfony-cli
-      - tailscale
       - ut
       - starship
       - uv
-      - vercel
       - zoxide
     work:
       - platformsh/tap/platformsh-cli
       - platformsh/tap/upsun-cli
       - upsun/tap/upsun-cli
       - pulumi
+    private:
+      - supabase/tap/supabase
+      - vercel
 
 uvTools:
   darwin:
     common:
       - graphifyy
     work: []
+    private: []
 
 casks:
   darwin:
     common:
       - 1password
       - 1password-cli
-      - bitwarden
       - bruno
       - cleanshot
       - google-chrome
-      - orbstack
       - raycast
       - spotify
       - tableplus
@@ -72,6 +72,6 @@ casks:
       - ghostty
       - claude
     work:
-      - cursor
-      - microsoft-teams
-      - slack
+      - bitwarden
+      - orbstack
+    private: []

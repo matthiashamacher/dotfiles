@@ -11,6 +11,10 @@ brew trust {{ . | quote }}
 {{ range .taps.darwin.work -}}
 brew trust {{ . | quote }}
 {{ end -}}
+{{ else -}}
+{{ range .taps.darwin.private -}}
+brew trust {{ . | quote }}
+{{ end -}}
 {{ end -}}
 
 brew bundle --file=/dev/stdin <<EOF
@@ -21,6 +25,10 @@ tap {{ . | quote }}
 {{ range .taps.darwin.work -}}
 tap {{ . | quote }}
 {{ end -}}
+{{ else -}}
+{{ range .taps.darwin.private -}}
+tap {{ . | quote }}
+{{ end -}}
 {{ end -}}
 {{ range .packages.darwin.common -}}
 brew {{ . | quote }}
@@ -29,12 +37,20 @@ brew {{ . | quote }}
 {{ range .packages.darwin.work -}}
 brew {{ . | quote }}
 {{ end -}}
+{{ else -}}
+{{ range .packages.darwin.private -}}
+brew {{ . | quote }}
+{{ end -}}
 {{ end -}}
 {{ range .casks.darwin.common -}}
 cask {{ . | quote }}
 {{ end -}}
 {{ if eq $profile "work" -}}
 {{ range .casks.darwin.work -}}
+cask {{ . | quote }}
+{{ end -}}
+{{ else -}}
+{{ range .casks.darwin.private -}}
 cask {{ . | quote }}
 {{ end -}}
 {{ end -}}
@@ -59,6 +75,10 @@ uv tool install --upgrade {{ . | quote }} -q
 {{ end -}}
 {{ if eq $profile "work" -}}
 {{ range .uvTools.darwin.work -}}
+uv tool install --upgrade {{ . | quote }} -q
+{{ end -}}
+{{ else -}}
+{{ range .uvTools.darwin.private -}}
 uv tool install --upgrade {{ . | quote }} -q
 {{ end -}}
 {{ end -}}
