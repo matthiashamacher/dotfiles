@@ -1,3 +1,5 @@
+{{- $profile := index . "profile" | default "private" -}}
+{{- if eq $profile "private" -}}
 #!/bin/sh
 
 [ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -48,4 +50,6 @@ PRIVATE_REPOS_EOF
 echo "${PRIVATE_REPOS_JSON}" | jq -r '.[] | "\(.repo)\t\(.path)"' | while IFS="$(printf '\t')" read -r repo path; do
   clone_repo "${repo}" "${path}"
 done
+{{- end }}
+
 {{- end }}
