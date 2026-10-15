@@ -14,13 +14,13 @@ Include ~/.ssh/configs/*.config
 {{ if eq $profile "work" -}}
 # BEGIN: Upsun certificate configuration
 Host *.platform.sh *.upsun.com
-  Include /Users/matthiashamacher/.upsun-cli/ssh/*.config
+  Include {{ .chezmoi.homeDir }}/.upsun-cli/ssh/*.config
 Host *
 # END: Upsun certificate configuration
 
 # BEGIN: Upsun (formerly Platform.sh) certificate configuration
 Host *.platform.sh
-  Include /Users/matthiashamacher/.platformsh/ssh/*.config
+  Include {{ .chezmoi.homeDir }}/.platformsh/ssh/*.config
 Host *
 # END: Upsun (formerly Platform.sh) certificate configuration
 {{ end -}}
