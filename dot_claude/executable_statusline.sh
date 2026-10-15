@@ -1,5 +1,5 @@
 #!/bin/bash
-# Claude Code statusline: model | dir | git branch +adds -dels | context % | effort | caveman badge
+# Claude Code statusline: model | dir | git branch ↑push ↓pull +adds -dels | context % | effort | caveman badge
 
 input=$(cat)
 
@@ -23,6 +23,8 @@ if git -C "$cwd" rev-parse --abbrev-ref HEAD >/dev/null 2>&1; then
     [ "$a" != "-" ] && adds=$((adds + a))
     [ "$d" != "-" ] && dels=$((dels + d))
   done < <(git -C "$cwd" diff HEAD --numstat 2>/dev/null)
+  # commits behind (pull) / ahead (push) of upstream; empty without upstream
+  read -r behind ahead < <(git -C "$cwd" rev-list --left-right --count '@{u}...HEAD' 2>/dev/null)
 fi
 
 sep=$'\033[38;5;240m|\033[0m'
@@ -31,6 +33,8 @@ sep=$'\033[38;5;240m|\033[0m'
 out=$(printf '\033[38;5;245m%s\033[0m' "$dir")
 if [ -n "$branch" ]; then
   out+=" $(printf '\033[38;5;114m(%s)\033[0m' "$branch")"
+  [ "${ahead:-0}" -gt 0 ] && out+=" $(printf '\033[38;5;114m↑%s\033[0m' "$ahead")"
+  [ "${behind:-0}" -gt 0 ] && out+=" $(printf '\033[38;5;179m↓%s\033[0m' "$behind")"
   if [ "$adds" -gt 0 ] || [ "$dels" -gt 0 ]; then
     out+=" $(printf '\033[38;5;114m+%s\033[0m \033[38;5;167m-%s\033[0m' "$adds" "$dels")"
   fi
