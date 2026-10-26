@@ -79,8 +79,4 @@ Five slash commands for structured, high-quality feature development. Use this p
 
 ## Language
 - Answer in the language of the prompt (German or English). Keep technical terms, code, and error strings verbatim.
-# graphify
-- **graphify** (`~/.claude/skills/graphify/SKILL.md`) - any input to knowledge graph. Trigger: `/graphify`
-When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` before doing anything else.
-
 @RTK.md

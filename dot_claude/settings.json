@@ -77,16 +77,6 @@
           }
         ]
       }
-    ],
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"$HOME/.claude/graphify-session-hook.sh\""
-          }
-        ]
-      }
     ]
   }
 }

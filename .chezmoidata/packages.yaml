@@ -50,8 +50,7 @@ packages:
 
 uvTools:
   darwin:
-    common:
-      - graphifyy
+    common: []
     work: []
     private: []
 
