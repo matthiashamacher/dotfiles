@@ -19,6 +19,11 @@ export GPG_TTY=$(tty);
 
 # Tell homebrew to not autoupdate every single time I run it (just once a week).
 export HOMEBREW_AUTO_UPDATE_SECS=604800
+{{- if (index . "userApps" | default false) }}
+
+# No admin rights: install casks into ~/Applications.
+export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
+{{- end }}
 
 # Allow Composer to use almost as much RAM as Chrome.
 export COMPOSER_MEMORY_LIMIT=-1

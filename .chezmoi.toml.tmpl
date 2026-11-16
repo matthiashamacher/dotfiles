@@ -1,8 +1,10 @@
 {{- $profile := (stdinIsATTY | ternary (promptStringOnce . "profile" "Profile (work/private)") "private") -}}
+{{- $userApps := (stdinIsATTY | ternary (promptBoolOnce . "userApps" "Install casks into ~/Applications (no admin)") false) -}}
 encryption = "age"
 
 [data]
     profile = {{ $profile | quote }}
+    userApps = {{ $userApps }}
 
 [git]
     autoCommit = true
